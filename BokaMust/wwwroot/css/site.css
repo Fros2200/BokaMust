@@ -18,5 +18,48 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    
+}
+
+.screen { /*gör så att designen ser ut som en mobil på sidan*/
+    width: 375px;
+    height: 812px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #A4B494;
+}
+
+#logo{
+    height:50px; 
+    width:auto; 
+}
+
+
+#container-banner {
+    display: flex;
+    justify-content: center; /* horisontellt*/
+    align-items: center; /* vertikalt*/
+}
+
+#apples-banner {
+    max-width: 90%; 
+    max-height: 100%; 
+}
+
+
+.main-content{
+    margin: 10% 5% 10% 5%; 
+}
+
+
+#guide-info{
+    margin-bottom: 30px; 
+}
+
+#booking-info{
+    margin-bottom: 10px; 
 }

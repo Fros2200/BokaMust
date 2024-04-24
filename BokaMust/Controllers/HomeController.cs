@@ -18,7 +18,12 @@ namespace BokaMust.Controllers
 			return View();
 		}
 
-		public IActionResult Privacy()
+		public IActionResult BookingOne()
+		{
+			return View();
+		}
+
+		public IActionResult Guide()
 		{
 			return View();
 		}

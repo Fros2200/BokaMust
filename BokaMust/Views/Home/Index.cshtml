@@ -2,7 +2,34 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div id="container-banner">
+    <img id="apples-banner" src="/img/applesOnTree.jpg" alt="Bild på äpplen" />
 </div>
+    
+<div class="main-content">
+    <h3>Vi mustar dina äpplen</h3>
+    <p>Vi pressar god äppelmust av dina egna medhavna äpplen. Must av 100% äpple, inga tillsatser!</p>
+
+    <div id="guide-info">
+        <p>Behöver du lite hjälp på vägen? Använd vår guide och få mer information om hur mustningen går till</p>
+        <button type="button"> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Guide">Guide</a></button>
+    </div>
+
+    <div id="booking-info">
+        <p>Här kan du boka tid till vårt musteri</p>
+        <button type="button"> <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BookingOne">Boka mustning</a></button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
