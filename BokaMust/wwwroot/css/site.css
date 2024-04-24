@@ -38,6 +38,20 @@ body {
     width:auto; 
 }
 
+footer {
+    background-color: white;
+    padding: 5px;
+    margin-top: auto;
+    text-align: center;
+}
+
+.bi-instagram, .bi-facebook {
+    height: 30px;
+    width: auto;
+    margin: 10px
+}
+
+/*STIL FÖR HEM*/
 
 #container-banner {
     display: flex;
@@ -55,6 +69,9 @@ body {
     margin: 10% 5% 10% 5%; 
 }
 
+.btn{
+    border-radius:8px; 
+}
 
 #guide-info{
     margin-bottom: 30px; 
@@ -63,3 +80,65 @@ body {
 #booking-info{
     margin-bottom: 10px; 
 }
+
+
+/*STIL FÖR GUIDE*/
+
+/* Stil för dropdown-knappen */
+.dropbtn {
+    background-color: white;
+    color: black;
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 14px;
+    text-align:left; 
+    width: 110px; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+    .dropbtn:hover, .dropbtn:focus {
+        background-color: lightgray;
+
+    }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    /* Stil för länkar i dropdown-menyn */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+/* Visa dropdown-innehållet (menyn) när klickar på dropdown-knappen */
+.dropdown:focus-within .dropdown-content {
+    display: block;
+}
+
+
+#btn-get-guide-results {
+    background-color: #34623F; 
+    color: white; 
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/*STIL FÖR BOKA*/

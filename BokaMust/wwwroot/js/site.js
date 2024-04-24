@@ -1,28 +1,30 @@
-﻿function toggleCheckmark(extra) {
-    // Toogle the icon
-    extra.querySelector(".add-icon").classList.toggle("hidden")
-    extra.querySelector(".checkmark-icon").classList.toggle("visible")
-    // Toogle the background
-    extra.classList.toggle("selected")
-}
+﻿// === Globala variabler ===
 
-var app = new Vue({
-    el: '#app',
-    data: {
-        price: 10.99,
-        peanutButter: false,
-        yogurt: false,
-        mixedBerries: false,
-        appleCinnamon: false
-    },
-    methods: {
-        updatePrice: function (extra, extraString) {
-            if (extra === false) {
-                this.price += 2.99
-            } else {
-                this.price -= 2.99
-            }
-            this[extraString] = !extra
-        }
+
+// === Eventlisteners ===
+
+document.getElementById("zoneDropdown").addEventListener("click", function () {
+    zoneDropdownContent.style.display = zoneDropdownContent.style.display === "block" ? "none" : "block";
+});
+
+document.getElementById("zoneDropdownContent").addEventListener("click", function (event) {
+    if (event.target.tagName === "A") {
+        zoneDropdown.innerText = event.target.innerText;
+        zoneDropdownContent.style.display = "none";
     }
-})
+});
+
+document.getElementById("appleDropdown").addEventListener("click", function () {
+    appleDropdownContent.style.display = appleDropdownContent.style.display === "block" ? "none" : "block";
+});
+
+document.getElementById("appleDropdownContent").addEventListener("click", function (event) {
+    if (event.target.tagName === "A") {
+        appleDropdown.innerText = event.target.innerText;
+        appleDropdownContent.style.display = "none";
+    }
+});
+
+document.getElementById("findTimeSlot").addEventListener("click", function () {
+    window.open("/Home/Popup", "Popup", "width=400,height=400");
+});
