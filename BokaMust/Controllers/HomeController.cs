@@ -28,7 +28,7 @@ namespace BokaMust.Controllers
 			return View();
 		}
 
-		public IActionResult Popup()
+		public IActionResult GuideResults()
 		{
 			return View();
 		}

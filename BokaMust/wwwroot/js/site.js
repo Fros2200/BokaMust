@@ -25,6 +25,14 @@ document.getElementById("appleDropdownContent").addEventListener("click", functi
     }
 });
 
-document.getElementById("findTimeSlot").addEventListener("click", function () {
-    window.open("/Home/Popup", "Popup", "width=400,height=400");
-});
+
+// === Funktioner ==
+
+
+
+
+
+
+
+
+

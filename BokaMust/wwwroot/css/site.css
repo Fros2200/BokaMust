@@ -81,6 +81,16 @@ footer {
     margin-bottom: 10px; 
 }
 
+.btn {
+    background-color: white;
+    color: black;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+    border: solid;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
 /*STIL FÖR GUIDE*/
 
@@ -130,15 +140,21 @@ footer {
 }
 
 
-#btn-get-guide-results {
-    background-color: #34623F; 
-    color: white; 
+#btn-guide-results {
+    background-color: white; 
+    color: black; 
     margin-bottom: 15px;
-    padding: 12px;
     font-size: 16px;
-    border: none;
+    text-align:center; 
+    border:solid; 
     border-radius: 8px;
     cursor: pointer;
+}
+
+/* Stil för popup-innehållet */
+.container-guide-results {
+    padding: 20px;
+    text-align: center;
 }
 
 /*STIL FÖR BOKA*/
