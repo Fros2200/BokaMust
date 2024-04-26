@@ -95,7 +95,7 @@ footer {
 /*STIL FÖR GUIDE*/
 
 /* Stil för dropdown-knappen */
-.dropbtn {
+/*.dropbtn {
     background-color: white;
     color: black;
     margin-bottom: 15px;
@@ -120,10 +120,10 @@ footer {
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-}
+}*/
 
     /* Stil för länkar i dropdown-menyn */
-    .dropdown-content a {
+    /*.dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
@@ -132,12 +132,44 @@ footer {
 
         .dropdown-content a:hover {
             background-color: #f1f1f1;
-        }
+        }*/
 
 /* Visa dropdown-innehållet (menyn) när klickar på dropdown-knappen */
-.dropdown:focus-within .dropdown-content {
+/*.dropdown:focus-within .dropdown-content {
     display: block;
+}*/
+
+
+/*Stil för dropdown menyer*/
+
+select {
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 16px;
+    width: 200px;
+    padding: 10px;
+    margin-top:10px; 
+    margin-bottom:20px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
+
+option {
+    background-color: #fff;
+    color: #333;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+option:hover {
+    background-color: #f9f9f9;
+}
+
+option:focus {
+    background-color: #ddd;
+}
+
+
 
 
 #btn-guide-results {

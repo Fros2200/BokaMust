@@ -3,29 +3,20 @@
 
 // === Eventlisteners ===
 
-document.getElementById("zoneDropdown").addEventListener("click", function () {
-    zoneDropdownContent.style.display = zoneDropdownContent.style.display === "block" ? "none" : "block";
-});
+//Beräkna knappen i mitt Guideformulär
+/*document.getElementById("btnSubmitGuide").addEventListener("click", validateGuideForm); */
 
-document.getElementById("zoneDropdownContent").addEventListener("click", function (event) {
-    if (event.target.tagName === "A") {
-        zoneDropdown.innerText = event.target.innerText;
-        zoneDropdownContent.style.display = "none";
-    }
-});
+//Mitt formulär
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('guideForm');
 
-document.getElementById("appleDropdown").addEventListener("click", function () {
-    appleDropdownContent.style.display = appleDropdownContent.style.display === "block" ? "none" : "block";
-});
-
-document.getElementById("appleDropdownContent").addEventListener("click", function (event) {
-    if (event.target.tagName === "A") {
-        appleDropdown.innerText = event.target.innerText;
-        appleDropdownContent.style.display = "none";
-    }
-});
-
-document.getElementById("btnSubmitGuide").addEventListener("click", validateGuideForm); 
+    form.addEventListener('submit', (event) => {
+        if (!isGuideFormValid()) {
+            event.preventDefault();
+            alert('Vänligen fyll i alla fält.');
+        }
+    });
+}); 
 
 
 // === Anrop ===
@@ -51,47 +42,45 @@ document.getElementById("btnSubmitGuide").addEventListener("click", validateGuid
 //}
 
 
-function isWeightApproved(weightInput) {
+function isWeightApproved(inputWeight) {
 
-    if (weightInput == null || weightInput == "") {
+    if (inputWeight == null || inputWeight == "") {
         alert("Du måste ange en vikt");
         return false;
     }
-    else if (weightInput < 30) {
+    else if (inputWeight < 30) {
         alert("Minsta vikt är 30kg"); 
         return false;
     }
     return true; 
-  
 }
 
-function validateGuideForm() {
+//function isGuideFormValid() {
 
-    let selectedZone = document.querySelector('#zoneDropdownContent a,active').getAttribute("value");
-    let selectedApple = document.querySelector('#appleDropdownContent a,active').getAttribute("value");
-    let radioBtnValue = document.querySelector('input[name="choice"]:checked').value;
-    let weightInput = document.getElementById("weightField").value;
+//    var selectedZone = document.getElementById('zoneDropdown').value;
+//    var selectedApple = document.getElementById('appleDropdown').value;
+//    let selectedPackaging = document.querySelector('input[name="choice"]:checked').value;
+//    let weightInput = document.getElementById("weightField").value;
 
-    console.log(selectedZone);
-    console.log(selectedApple); 
-    console.log(radioBtnValue);
-    console.log(weightInput); 
+//    //console.log(selectedZone);
+//    //console.log(selectedApple);
+//    //console.log(selectedPackaging);
+//    //console.log(weightInput);
 
-    isWeightApproved(weightInput); 
-    console.log("Vi kom hit")
+//    isWeightApproved(weightInput);
+///*    console.log("Vi kom hit")*/
 
-    //if (isWeightApproved(weightInput) && zoneDropdown && appleDropdown && radioBtnValue && weightInput) {
-    //    console.log("Alla fält är ifyllda korrekt"); 
-    //    return true; 
-    //}
-    //alert("Du måste fylla i samtliga fält"); 
-    //return false; 
+//    //if (!selectedZone || !selectedApple || !radioBtnValue) {
+//    //    alert("Du måste fylla i samtliga fält");
+//    //}
+//    return selectedZone && selectedApple && selectedPackaging;
+//}
 
-}
+    function isGuideFormValid() {
+        const dropdown1Value = document.getElementById('dropdown1').value;
+        const dropdown2Value = document.getElementById('dropdown2').value;
+        const selectedPackaging = document.querySelector('input[name="radioButton"]:checked');
+        const inputWeight = document.getElementById('textInput').value;
 
-
-
-
-
-
-
+        return dropdown1Value && dropdown2Value && selectedPackaging && inputWeight;
+    }

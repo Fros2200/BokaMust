@@ -18,20 +18,20 @@ namespace BokaMust.Controllers
 			return View();
 		}
 
-		public IActionResult BookingOne()
-		{
-			return View();
-		}
+		//public IActionResult BookingOne()
+		//{
+		//	return View();
+		//}
 
-		public IActionResult Guide()
-		{
-			return View();
-		}
+		//public IActionResult GuideForm()
+		//{
+		//	return View();
+		//}
 
-		public IActionResult GuideResults()
-		{
-			return View();
-		}
+		//public IActionResult GuideResults()
+		//{
+		//	return View();
+		//}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
