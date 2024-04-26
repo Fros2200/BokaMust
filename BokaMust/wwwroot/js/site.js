@@ -25,10 +25,69 @@ document.getElementById("appleDropdownContent").addEventListener("click", functi
     }
 });
 
+document.getElementById("btnSubmitGuide").addEventListener("click", validateGuideForm); 
+
+
+// === Anrop ===
+//disableSubmitBtn();
+//enableSubmitBtn();
+
+
 
 // === Funktioner ==
 
+//function disableSubmitBtn() {
 
+//    document.addEventListener("DOMContentLoaded", function () {
+//        const btnSubmitGuide = document.getElementById("btnSubmitGuide");
+//        btnSubmitGuide.disabled = true;
+//    });
+//}
+
+//function enableSubmitBtn() {
+
+//    const btnSubmitGuide = document.getElementById("btnSubmitGuide");
+//    btnSubmitGuide.disabled = false; 
+//}
+
+
+function isWeightApproved(weightInput) {
+
+    if (weightInput == null || weightInput == "") {
+        alert("Du måste ange en vikt");
+        return false;
+    }
+    else if (weightInput < 30) {
+        alert("Minsta vikt är 30kg"); 
+        return false;
+    }
+    return true; 
+  
+}
+
+function validateGuideForm() {
+
+    let selectedZone = document.querySelector('#zoneDropdownContent a,active').getAttribute("value");
+    let selectedApple = document.querySelector('#appleDropdownContent a,active').getAttribute("value");
+    let radioBtnValue = document.querySelector('input[name="choice"]:checked').value;
+    let weightInput = document.getElementById("weightField").value;
+
+    console.log(selectedZone);
+    console.log(selectedApple); 
+    console.log(radioBtnValue);
+    console.log(weightInput); 
+
+    isWeightApproved(weightInput); 
+    console.log("Vi kom hit")
+
+    //if (isWeightApproved(weightInput) && zoneDropdown && appleDropdown && radioBtnValue && weightInput) {
+    //    console.log("Alla fält är ifyllda korrekt"); 
+    //    return true; 
+    //}
+    //alert("Du måste fylla i samtliga fält"); 
+    //return false; 
+
+}
 
 
 
