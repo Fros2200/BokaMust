@@ -4,19 +4,19 @@
 // === Eventlisteners ===
 
 //Beräkna knappen i mitt Guideformulär
-/*document.getElementById("btnSubmitGuide").addEventListener("click", validateGuideForm); */
+document.getElementById("btnSubmitGuide").addEventListener("click", isGuideFormValid); 
 
 //Mitt formulär
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('guideForm');
+//document.addEventListener('DOMContentLoaded', () => {
+//    const form = document.getElementById('guideForm');
 
-    form.addEventListener('submit', (event) => {
-        if (!isGuideFormValid()) {
-            event.preventDefault();
-            alert('Vänligen fyll i alla fält.');
-        }
-    });
-}); 
+//    form.addEventListener('submit', (event) => {
+//        if (!isGuideFormValid()) {
+//            event.preventDefault();
+//            alert('Vänligen fyll i alla fält.');
+//        }
+//    });
+//});
 
 
 // === Anrop ===
@@ -38,9 +38,36 @@ document.addEventListener('DOMContentLoaded', () => {
 //function enableSubmitBtn() {
 
 //    const btnSubmitGuide = document.getElementById("btnSubmitGuide");
-//    btnSubmitGuide.disabled = false; 
+//    btnSubmitGuide.disabled = false;
 //}
 
+function isZoneSelected() {
+    const selectedzone = document.querySelector('#zoneDropdown');
+    if (selectedzone.value == null || selectedzone.value == "") {
+        alert("Du måste ange zon");
+        return false;
+    }
+    return true;
+
+}
+function isAppleSelected() {
+    const selectedApple = document.querySelector('#appleDropdown');
+    if (selectedApple.value == null || selectedApple.value == "") {
+        alert("Du måste ange äppelsort");
+        return false;
+    }
+    return true;
+}
+
+function isRadioBtnChecked() {
+    const selectedRadioBtn = document.querySelector('input[name="choice"]:checked');
+
+    if (!selectedRadioBtn) {
+        alert("Du måste välja förpackningsalternativ");
+        return false;
+    }
+    return true;
+}
 
 function isWeightApproved(inputWeight) {
 
@@ -49,38 +76,25 @@ function isWeightApproved(inputWeight) {
         return false;
     }
     else if (inputWeight < 30) {
-        alert("Minsta vikt är 30kg"); 
+        alert("Minsta vikt är 30kg");
         return false;
     }
-    return true; 
+    return true;
 }
 
-//function isGuideFormValid() {
 
-//    var selectedZone = document.getElementById('zoneDropdown').value;
-//    var selectedApple = document.getElementById('appleDropdown').value;
-//    let selectedPackaging = document.querySelector('input[name="choice"]:checked').value;
-//    let weightInput = document.getElementById("weightField").value;
-
-//    //console.log(selectedZone);
-//    //console.log(selectedApple);
-//    //console.log(selectedPackaging);
-//    //console.log(weightInput);
-
-//    isWeightApproved(weightInput);
-///*    console.log("Vi kom hit")*/
-
-//    //if (!selectedZone || !selectedApple || !radioBtnValue) {
-//    //    alert("Du måste fylla i samtliga fält");
-//    //}
-//    return selectedZone && selectedApple && selectedPackaging;
-//}
-
+//Ska jag ha fyra separata funktioner för att kontrollera varje del i formuläret?
     function isGuideFormValid() {
-        const dropdown1Value = document.getElementById('dropdown1').value;
-        const dropdown2Value = document.getElementById('dropdown2').value;
-        const selectedPackaging = document.querySelector('input[name="radioButton"]:checked');
-        const inputWeight = document.getElementById('textInput').value;
+        const zoneDropdown = document.getElementById('zoneDropdown').value;
+        const appleDropdown = document.getElementById('appleDropdown').value;
+        const inputWeight = document.getElementById("weightField").value;
 
-        return dropdown1Value && dropdown2Value && selectedPackaging && inputWeight;
+        const selectedZone = isZoneSelected(zoneDropdown); 
+        const selectedApple = isAppleSelected(appleDropdown); 
+        const selectedPackaging = isRadioBtnChecked();
+        const approvedWeight = isWeightApproved(inputWeight);
+
+        console.log(approvedWeight, selectedZone, selectedApple, selectedPackaging)
+
+        return;
     }
