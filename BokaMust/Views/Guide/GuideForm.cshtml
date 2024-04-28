@@ -3,29 +3,13 @@
 <h4>Mustguiden</h4>
 <p>Här får du en guide till äppelmustningen</p>
 
-@* <form id="guideForm" asp-action="Save" asp-controller="Guide" method="post"> *@
-
-    <div>
-        <lable>Ange din växtzon</lable>
-        <br />
-        <select id="zoneDropdown" asp-for="SelectedZone">
-            <option value="" selected disabled>Ange zon</option>
-            <option value="Zon1">Zon 1</option>
-            <option value="Zon2">Zon 2</option>
-            <option value="Zon3">Zon 3</option>
-            <option value="Zon4">Zon 4</option>
-            <option value="Zon5">Zon 5</option>
-            <option value="Zon6">Zon 6</option>
-            <option value="Zon7">Zon 7</option>
-            <option value="Zon8">Zon 8</option>
-        </select>
-    </div>
+<form id="guideForm" asp-area="" asp-controller="Guide" asp-action="GuideResults" method="post">
 
     <div>
         <label>Ange din äppelsort</label>
         <br/>
         <select id="appleDropdown" asp-for="SelectedApple">
-            <option value="" selected disabled>Ange äppelsort</option>
+            <option value="" selected disabled>Välj</option>
             <option value="Aroma">Aroma</option>
             <option value="Cox Orange">Cox Orange</option>
             <option value="Discovery">Discovery</option>
@@ -39,24 +23,24 @@
     </div>
 
     <div>
-        <lable>Hur vill du att din must förpackas?</lable>
+        <label>Hur vill du att din must förpackas?</label>
         <br />
-        <label><input type="radio" id="bib" name="choice" value="bib" asp-formaction="SelectedPackaging">Bag-in-Box</label>
-        <br />
-        <label><input type="radio" id="rawmust" name="choice" value="rawmust" asp-formaction="SelectedPackaging">Råmust</label>
+        <select id="packagingDropdown" asp-for="SelectedPackaging">
+            <option value="" selected disabled>Välj</option>
+            <option value="Bag-in-Box">Bag-in-Box</option>
+            <option value="Rawmust">Råmust</option>
+        </select>
     </div>
-    <br />
 
 <div id="weight">
     <label>Hur mycket äpplen vill du musta?</label>
     <br />
-    <input type="text" id="weightField" name="weight" asp-formaction="Weight">
+    <input type="text" id="inputWeight" name="weight" asp-formaction="Weight">
     <p>Ange vikt i kg, minsta vikt 30kg</p> 
     <br />
-    <button type="submit" id="btnSubmitGuide">Beräkna</button>
-   
+    <button type="submit" class="btn" id="btnSubmitGuide">Beräkna</button>
 </div>
-@* </form>  *@
+</form> 
 
 
 

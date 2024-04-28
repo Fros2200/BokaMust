@@ -2,74 +2,64 @@
 
 
 // === Eventlisteners ===
+document.getElementById('appleDropdown').addEventListener('change', toggleSubmitGuideBtn);
+document.getElementById('packagingDropdown').addEventListener('change', toggleSubmitGuideBtn);
+document.getElementById('inputWeight').addEventListener('input', toggleSubmitGuideBtn);
 
-//Beräkna knappen i mitt Guideformulär
-document.getElementById("btnSubmitGuide").addEventListener("click", isGuideFormValid); 
+//document.getElementById('packagingBooking').addEventListener('change', toggleSubmitBookingBtn);
+//document.getElementById('inputWeightBooking').addEventListener('input', toggleSubmitBookingBtn);
 
-//Mitt formulär
-//document.addEventListener('DOMContentLoaded', () => {
-//    const form = document.getElementById('guideForm');
 
-//    form.addEventListener('submit', (event) => {
-//        if (!isGuideFormValid()) {
-//            event.preventDefault();
-//            alert('Vänligen fyll i alla fält.');
-//        }
-//    });
+//Formulär för Guide
+document.getElementById("guideForm").addEventListener("submit", function (event) {
+
+    if (!isWeightValid()){
+        event.preventDefault();
+    }
+});
+
+//Formulär för Bokning
+//document.getElementById("bookingForm").addEventListener("submit", function (event) {
+
+//    if (!isWeightValid()) {
+//        event.preventDefault();
+//    }
 //});
 
-
 // === Anrop ===
-//disableSubmitBtn();
-//enableSubmitBtn();
+toggleSubmitGuideBtn(); 
+/*toggleSubmitBookingBtn(); */
 
 
 
 // === Funktioner ==
+function toggleSubmitGuideBtn() {
+    const appleDropdown = document.getElementById('appleDropdown');
+    const packagingDropdown = document.getElementById('packagingDropdown');
+    const inputWeight = document.getElementById('inputWeight');
+    const btnSubmitGuide = document.getElementById('btnSubmitGuide');
 
-//function disableSubmitBtn() {
+    const isAppleSelected = appleDropdown.value !== '';
+    const isPackagingSelected = packagingDropdown.value !== '';
+    const isWeightEntered = inputWeight.value.trim() !== '';
 
-//    document.addEventListener("DOMContentLoaded", function () {
-//        const btnSubmitGuide = document.getElementById("btnSubmitGuide");
-//        btnSubmitGuide.disabled = true;
-//    });
+    btnSubmitGuide.disabled = !(isAppleSelected && isPackagingSelected && isWeightEntered);
+}
+
+//function toggleSubmitBookingBtn() {
+//    const packagingDropdown = document.getElementById('packagingBooking');
+//    const inputWeight = document.getElementById('inputWeightBooking');
+//    const btnSubmitBooking = document.getElementById('btnSubmitBooking');
+
+//    const isPackagingSelected = packagingDropdown.value !== '';
+//    const isWeightEntered = inputWeight.value.trim() !== '';
+
+//    btnSubmitBooking.disabled = !(isPackagingSelected && isWeightEntered);
 //}
 
-//function enableSubmitBtn() {
-
-//    const btnSubmitGuide = document.getElementById("btnSubmitGuide");
-//    btnSubmitGuide.disabled = false;
-//}
-
-function isZoneSelected() {
-    const selectedzone = document.querySelector('#zoneDropdown');
-    if (selectedzone.value == null || selectedzone.value == "") {
-        alert("Du måste ange zon");
-        return false;
-    }
-    return true;
-
-}
-function isAppleSelected() {
-    const selectedApple = document.querySelector('#appleDropdown');
-    if (selectedApple.value == null || selectedApple.value == "") {
-        alert("Du måste ange äppelsort");
-        return false;
-    }
-    return true;
-}
-
-function isRadioBtnChecked() {
-    const selectedRadioBtn = document.querySelector('input[name="choice"]:checked');
-
-    if (!selectedRadioBtn) {
-        alert("Du måste välja förpackningsalternativ");
-        return false;
-    }
-    return true;
-}
-
-function isWeightApproved(inputWeight) {
+function isWeightValid() {
+    const enteredWeight = document.getElementById('inputWeight'); 
+    const inputWeight = enteredWeight.value.trim(); 
 
     if (inputWeight == null || inputWeight == "") {
         alert("Du måste ange en vikt");
@@ -81,20 +71,3 @@ function isWeightApproved(inputWeight) {
     }
     return true;
 }
-
-
-//Ska jag ha fyra separata funktioner för att kontrollera varje del i formuläret?
-    function isGuideFormValid() {
-        const zoneDropdown = document.getElementById('zoneDropdown').value;
-        const appleDropdown = document.getElementById('appleDropdown').value;
-        const inputWeight = document.getElementById("weightField").value;
-
-        const selectedZone = isZoneSelected(zoneDropdown); 
-        const selectedApple = isAppleSelected(appleDropdown); 
-        const selectedPackaging = isRadioBtnChecked();
-        const approvedWeight = isWeightApproved(inputWeight);
-
-        console.log(approvedWeight, selectedZone, selectedApple, selectedPackaging)
-
-        return;
-    }

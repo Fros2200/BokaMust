@@ -4,7 +4,12 @@ namespace BokaMust.Controllers
 {
     public class BookingController : Controller
     {
-        public IActionResult BookingOne()
+        public IActionResult BookingForm()
+        {
+            return View();
+        }
+
+        public IActionResult Calendar()
         {
             return View();
         }

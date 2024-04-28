@@ -11,32 +11,48 @@ namespace BokaMust.Controllers
             return View();
         }
 
+        public IActionResult GuideResults() 
+        {
+            return View(); 
+        }
+
 
         [HttpPost]
         public IActionResult Save(GuideViewModel guideViewModel)
         {
-            string selectedZone = guideViewModel.SelectedZone;
+            //string selectedZone = guideViewModel.SelectedZone;
             string selectedApple = guideViewModel.SelectedApple;
-            string selectedRadioButton = guideViewModel.SelectedPackaging;
+            string selectedPackaging = guideViewModel.SelectedPackaging;
             decimal weight = guideViewModel.Weight;
 
-            string result = "Du har fått info från din controller ut i vyn";
+            string result = $"Du vill musta {weight}kg av {selectedApple} och förpacka din must som {selectedPackaging}";
 
             return View("GuideResults", result);
         }
         
 
+        public int calculateCost(GuideViewModel guideViewModel)
+        {
+            int weight = guideViewModel.Weight; 
+            string packaging = guideViewModel.SelectedPackaging.ToString();
+
+            int rawmust = 18;
+            int bib = 28;
 
 
-        //[HttpPost]
-        //public IActionResult CalculateGuideResults()
-        //{
-        //    return View();
-        //}
+            if(packaging == "rawmust")
+            {
+                int cost = weight * rawmust;
+                return cost;
+            }
+            else if(packaging == "bib")
+            {
+                int cost = weight * bib;
+                return cost;
+            }
+            return 0;            
+        }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+
     }
 }

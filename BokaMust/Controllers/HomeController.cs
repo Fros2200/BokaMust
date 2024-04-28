@@ -18,7 +18,7 @@ namespace BokaMust.Controllers
 			return View();
 		}
 
-		//public IActionResult BookingOne()
+		//public IActionResult BookingForm()
 		//{
 		//	return View();
 		//}
