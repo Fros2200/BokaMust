@@ -1,4 +1,4 @@
-using BokaMust.Models;
+using BokaMust.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -17,21 +17,6 @@ namespace BokaMust.Controllers
 		{
 			return View();
 		}
-
-		//public IActionResult BookingForm()
-		//{
-		//	return View();
-		//}
-
-		//public IActionResult GuideForm()
-		//{
-		//	return View();
-		//}
-
-		//public IActionResult GuideResults()
-		//{
-		//	return View();
-		//}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()

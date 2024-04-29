@@ -1,4 +1,4 @@
-﻿@model BokaMust.Models.GuideViewModel
+﻿@model BokaMust.Models.ViewModels.GuideViewModel
 
 <h4>Mustguiden</h4>
 <p>Här får du en guide till äppelmustningen</p>
@@ -7,35 +7,36 @@
 
     <div>
         <label>Ange din äppelsort</label>
-        <br/>
-        <select id="appleDropdown" asp-for="SelectedApple">
+        <br />
+        <select id="appleDropdown" asp-for="SelectedApple.Name">
             <option value="" selected disabled>Välj</option>
-            <option value="Aroma">Aroma</option>
-            <option value="Cox Orange">Cox Orange</option>
-            <option value="Discovery">Discovery</option>
-            <option value="Elise">Elise</option>
-            <option value="Frida">Frida</option>
-            <option value="Gravenstiener">Gravenstiener</option>
-            <option value="Ingrid-Marie">Ingrid-Marie</option>
-            <option value="Rubinola">Rubinola</option>
-            <option value="Santana">Santana</option>
+            @foreach (var apple in AppleRepository.AllApples)
+            {
+                <option value="@apple.Name">@apple.Name</option>
+            }
         </select>
     </div>
 
     <div>
         <label>Hur vill du att din must förpackas?</label>
         <br />
-        <select id="packagingDropdown" asp-for="SelectedPackaging">
-            <option value="" selected disabled>Välj</option>
-            <option value="Bag-in-Box">Bag-in-Box</option>
-            <option value="Rawmust">Råmust</option>
-        </select>
+        @foreach (var package in PackagingRepository.AllPackages)
+        {
+            <div>
+                <label>
+                    <input type="radio" asp-for="SelectedPackage.Name" value="@package.Name" name="packagingOption"/>
+                    @package.Name
+                </label>
+            </div>
+        }
     </div>
+
+
 
 <div id="weight">
     <label>Hur mycket äpplen vill du musta?</label>
     <br />
-    <input type="text" id="inputWeight" name="weight" asp-formaction="Weight">
+    <input type="text" id="inputWeight" asp-for="SelectedApple.WeightInput">
     <p>Ange vikt i kg, minsta vikt 30kg</p> 
     <br />
     <button type="submit" class="btn" id="btnSubmitGuide">Beräkna</button>

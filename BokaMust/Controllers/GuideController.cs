@@ -1,4 +1,5 @@
 ﻿using BokaMust.Models;
+using BokaMust.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BokaMust.Controllers
@@ -11,48 +12,60 @@ namespace BokaMust.Controllers
             return View();
         }
 
-        public IActionResult GuideResults() 
-        {
-            return View(); 
-        }
-
+        //public IActionResult GuideResults() 
+        //{
+        //    return View(); 
+        //}
 
         [HttpPost]
-        public IActionResult Save(GuideViewModel guideViewModel)
+        public IActionResult GuideResults(GuideViewModel guideViewModel)
         {
-            //string selectedZone = guideViewModel.SelectedZone;
-            string selectedApple = guideViewModel.SelectedApple;
-            string selectedPackaging = guideViewModel.SelectedPackaging;
-            decimal weight = guideViewModel.Weight;
+            int price = guideViewModel.CalculatePrice();
 
-            string result = $"Du vill musta {weight}kg av {selectedApple} och förpacka din must som {selectedPackaging}";
-
-            return View("GuideResults", result);
-        }
-        
-
-        public int calculateCost(GuideViewModel guideViewModel)
-        {
-            int weight = guideViewModel.Weight; 
-            string packaging = guideViewModel.SelectedPackaging.ToString();
-
-            int rawmust = 18;
-            int bib = 28;
-
-
-            if(packaging == "rawmust")
+            if(guideViewModel.SelectedApple.Weight < 30)
             {
-                int cost = weight * rawmust;
-                return cost;
+                ModelState.AddModelError("SelectedApple.Weight", "Vikten måste vara minst 30kg");
+                return View(guideViewModel);
             }
-            else if(packaging == "bib")
-            {
-                int cost = weight * bib;
-                return cost;
-            }
-            return 0;            
+
+            return View(guideViewModel);
         }
 
 
+        //public IActionResult GuideResults(GuideViewModel guideViewModel)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        ViewData["UserInput"] = guideViewModel;
+        //        return View("Success");
+        //    }
+        //    else
+        //    {
+        //        return View(guideViewModel);
+        //    }
+        //}
+
+
+            //[HttpPost]
+            //public IActionResult Save(GuideViewModel guideViewModel)
+            //{
+            //    //string selectedZone = guideViewModel.SelectedZone;
+            //    string selectedApple = guideViewModel.SelectedApple;
+            //    string selectedPackaging = guideViewModel.SelectedPackaging;
+            //    decimal weight = guideViewModel.Weight;
+
+            //    string result = $"Du vill musta {weight}kg av {selectedApple} och förpacka din must som {selectedPackaging}";
+
+            //    return View("GuideResults", result);
+            //}
+
+
+
+
+
+            public void GetAppleData()
+        {
+
+        }
     }
 }

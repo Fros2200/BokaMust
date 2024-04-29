@@ -52,7 +52,6 @@ footer {
 }
 
 /*STIL FÖR HEM*/
-
 #container-banner {
     display: flex;
     justify-content: center; /* horisontellt*/
@@ -93,7 +92,6 @@ footer {
 }
 
 /*STIL FÖR GUIDE*/
-
 /* Stil för dropdown menyer*/
 select {
     background-color: #f1f1f1;

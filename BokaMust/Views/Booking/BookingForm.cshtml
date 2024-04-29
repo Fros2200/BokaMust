@@ -1,4 +1,5 @@
-﻿@model BokaMust.Models.GuideViewModel
+﻿@model BokaMust.Models.ViewModels.GuideViewModel
+
 
 <div>
     <h4>Hitta tid för mustning</h4>
@@ -15,7 +16,7 @@
         <div>
             <label>Hur vill du att din must förpackas?</label>
             <br />
-            <select id="packagingBooking" asp-for="SelectedPackaging">
+            <select id="packagingBooking" asp-for="SelectedPackage.Name">
                 <option value="" selected disabled>Välj</option>
                 <option value="Bag-in-Box">Bag-in-Box</option>
                 <option value="Rawmust">Råmust</option>

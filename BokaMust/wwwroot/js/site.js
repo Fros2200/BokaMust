@@ -2,21 +2,35 @@
 
 
 // === Eventlisteners ===
-document.getElementById('appleDropdown').addEventListener('change', toggleSubmitGuideBtn);
-document.getElementById('packagingDropdown').addEventListener('change', toggleSubmitGuideBtn);
-document.getElementById('inputWeight').addEventListener('input', toggleSubmitGuideBtn);
+
+
+/**
+ * Lyssnar på valen i guideformuläret och anropar toggleSubmitBtn
+ */
+document.getElementById('guideForm').addEventListener('change', function (event) {
+    if (event.target.id === 'appleDropdown' || event.target.type === 'radio' || event.target.id === 'inputWeight') {
+        toggleSubmitGuideBtn();
+    }
+
+});
+
+
+/**
+ * Lyssnar på submit av guideformuläret och anropar isWeightValid, 
+ * om false så hindras formuläret från att skickas
+ */
+document.getElementById("guideForm").addEventListener("submit", function (event) {
+
+    if (!isWeightValid()) {
+        event.preventDefault();
+    }
+});
+
 
 //document.getElementById('packagingBooking').addEventListener('change', toggleSubmitBookingBtn);
 //document.getElementById('inputWeightBooking').addEventListener('input', toggleSubmitBookingBtn);
 
 
-//Formulär för Guide
-document.getElementById("guideForm").addEventListener("submit", function (event) {
-
-    if (!isWeightValid()){
-        event.preventDefault();
-    }
-});
 
 //Formulär för Bokning
 //document.getElementById("bookingForm").addEventListener("submit", function (event) {
@@ -33,39 +47,31 @@ toggleSubmitGuideBtn();
 
 
 // === Funktioner ==
+/**
+ * Aktiverar Beräkna-knappen när samtliga val är gjorda
+ */
 function toggleSubmitGuideBtn() {
-    const appleDropdown = document.getElementById('appleDropdown');
-    const packagingDropdown = document.getElementById('packagingDropdown');
-    const inputWeight = document.getElementById('inputWeight');
     const btnSubmitGuide = document.getElementById('btnSubmitGuide');
+    const isAppleSelected = document.getElementById('appleDropdown').value !== '';
+    const isPackagingSelected = document.querySelector('input[name="packagingOption"]:checked') !== null;
+    const isWeightEntered = document.getElementById('inputWeight').value.trim() !== '';
 
-    const isAppleSelected = appleDropdown.value !== '';
-    const isPackagingSelected = packagingDropdown.value !== '';
-    const isWeightEntered = inputWeight.value.trim() !== '';
+    console.log(isAppleSelected, isPackagingSelected, isWeightEntered)
 
     btnSubmitGuide.disabled = !(isAppleSelected && isPackagingSelected && isWeightEntered);
 }
 
-//function toggleSubmitBookingBtn() {
-//    const packagingDropdown = document.getElementById('packagingBooking');
-//    const inputWeight = document.getElementById('inputWeightBooking');
-//    const btnSubmitBooking = document.getElementById('btnSubmitBooking');
-
-//    const isPackagingSelected = packagingDropdown.value !== '';
-//    const isWeightEntered = inputWeight.value.trim() !== '';
-
-//    btnSubmitBooking.disabled = !(isPackagingSelected && isWeightEntered);
-//}
-
+/**
+ * Kontrollerar om inmatad vikt är godkänd
+ */
 function isWeightValid() {
-    const enteredWeight = document.getElementById('inputWeight'); 
-    const inputWeight = enteredWeight.value.trim(); 
+    const enteredWeight = document.getElementById('inputWeight').value.trim(); 
 
-    if (inputWeight == null || inputWeight == "") {
+    if (enteredWeight == null || enteredWeight == "") {
         alert("Du måste ange en vikt");
         return false;
     }
-    else if (inputWeight < 30) {
+    else if (enteredWeight < 30) {
         alert("Minsta vikt är 30kg");
         return false;
     }
