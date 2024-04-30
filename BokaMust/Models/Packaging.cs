@@ -1,7 +1,7 @@
 ﻿
 namespace BokaMust.Models
 {
-    public class Package
+    public class Packaging
     {
         public string Name { get; set; }
         public int Cost { get; set; }
@@ -9,10 +9,10 @@ namespace BokaMust.Models
 
     public static class PackagingRepository
     {
-        public static List<Package> AllPackages { get; set; } = new List<Package>
+        public static List<Packaging> AllPackages { get; } = new List<Packaging>
         {
-            new Package { Name = "Råmust", Cost = 18 },
-            new Package { Name = "BagInBox", Cost = 28 }
+            new Packaging { Name = "Råmust", Cost = 18 },
+            new Packaging { Name = "BagInBox", Cost = 28 }
         };
     }
 }

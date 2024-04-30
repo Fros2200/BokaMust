@@ -20,13 +20,17 @@ namespace BokaMust.Controllers
         [HttpPost]
         public IActionResult GuideResults(GuideViewModel guideViewModel)
         {
-            int price = guideViewModel.CalculatePrice();
+            string appleName = guideViewModel.SelectedApple.Name;
+            int weight = guideViewModel.SelectedApple.Weight; 
+            string packageName = guideViewModel.SelectedPackage.Name;
+            int cost = guideViewModel.SelectedPackage.Cost;
 
-            if(guideViewModel.SelectedApple.Weight < 30)
-            {
-                ModelState.AddModelError("SelectedApple.Weight", "Vikten måste vara minst 30kg");
-                return View(guideViewModel);
-            }
+
+            //if(guideViewModel.SelectedApple.Weight < 30)
+            //{
+            //    ModelState.AddModelError("SelectedApple.Weight", "Vikten måste vara minst 30kg");
+            //    return View(guideViewModel);
+            //}
 
             return View(guideViewModel);
         }

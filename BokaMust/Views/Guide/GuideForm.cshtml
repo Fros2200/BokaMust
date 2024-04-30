@@ -5,7 +5,7 @@
 
 <form id="guideForm" asp-area="" asp-controller="Guide" asp-action="GuideResults" method="post">
 
-    <div>
+  @*   <div>
         <label>Ange din äppelsort</label>
         <br />
         <select id="appleDropdown" asp-for="SelectedApple.Name">
@@ -15,32 +15,62 @@
                 <option value="@apple.Name">@apple.Name</option>
             }
         </select>
+    </div> *@
+
+@*     <div>
+        <label>Hur vill du att din must förpackas?</label>
+        <br />
+        @foreach (var packaging in PackagingRepository.AllPackages)
+        {
+            <div>
+                <label>
+                    <input type="radio" name="SelectedPackage.Name" value="@packaging.Name" />
+                    @packaging.Name
+                </label>
+            </div>
+        }
+    </div> *@
+
+    <div>
+        <label>Ange din äppelsort</label>
+        <br />
+        <br/>
+        <div class="d-flex flex-wrap">
+            @foreach (var apple in AppleRepository.AllApples)
+            {
+                <div class="col-4 p-0">
+                    <label class="btn btn-outline-primary btn-block m-0">
+                        <input type="radio" name="SelectedAppleName" autocomplete="off" value="@apple.Name" class="m-0"> @apple.Name
+                    </label>
+                </div>
+            }
+        </div>
     </div>
+    <br />
 
     <div>
         <label>Hur vill du att din must förpackas?</label>
         <br />
-        @foreach (var package in PackagingRepository.AllPackages)
-        {
-            <div>
-                <label>
-                    <input type="radio" asp-for="SelectedPackage.Name" value="@package.Name" name="packagingOption"/>
-                    @package.Name
-                </label>
-            </div>
-        }
+        <br />
+        <div class="custom-radio">
+            <label id="rawmust" class="btn btn-outline-primary">
+                <input type="radio" name="SelectedPackageName" autocomplete="off" value="Råmust"> Råmust <i class="fas fa-box ml-1"></i>
+            </label>
+            <label id="bib" class="btn btn-outline-primary">
+                <input type="radio" name="SelectedPackageName" autocomplete="off" value="BagInBox"> BagInBox <i class="fas fa-box ml-1"></i>
+            </label>
+        </div>
     </div>
 
-
-
-<div id="weight">
-    <label>Hur mycket äpplen vill du musta?</label>
-    <br />
-    <input type="text" id="inputWeight" asp-for="SelectedApple.WeightInput">
-    <p>Ange vikt i kg, minsta vikt 30kg</p> 
-    <br />
-    <button type="submit" class="btn" id="btnSubmitGuide">Beräkna</button>
-</div>
+    <div id="weight">
+        <label>Hur mycket äpplen vill du musta?</label>
+        <br />
+        <br />
+        <input type="text" id="inputWeight" asp-for="SelectedApple.WeightInput">
+        <p>Ange vikt i kg, minsta vikt 30kg</p> 
+        <br />
+        <button type="submit" class="btn" id="btnSubmitGuide">Beräkna</button>
+    </div>
 </form> 
 
 

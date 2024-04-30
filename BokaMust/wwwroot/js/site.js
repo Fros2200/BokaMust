@@ -7,12 +7,23 @@
 /**
  * Lyssnar på valen i guideformuläret och anropar toggleSubmitBtn
  */
+
+//TODO: TA bort, behövs inte längre då appleDropDown blivit radioknapp
+//document.getElementById('guideForm').addEventListener('change', function (event) {
+//    if (event.target.id === 'appleDropdown' || event.target.type === 'radio' || event.target.id === 'inputWeight') {
+//        toggleSubmitGuideBtn();
+//    }
+
+//});
+
+
 document.getElementById('guideForm').addEventListener('change', function (event) {
-    if (event.target.id === 'appleDropdown' || event.target.type === 'radio' || event.target.id === 'inputWeight') {
+    if (event.target.type === 'radio' || event.target.id === 'inputWeight') {
         toggleSubmitGuideBtn();
     }
-
 });
+
+
 
 
 /**
@@ -51,15 +62,24 @@ toggleSubmitGuideBtn();
  * Aktiverar Beräkna-knappen när samtliga val är gjorda
  */
 function toggleSubmitGuideBtn() {
+
+   
+
     const btnSubmitGuide = document.getElementById('btnSubmitGuide');
-    const isAppleSelected = document.getElementById('appleDropdown').value !== '';
-    const isPackagingSelected = document.querySelector('input[name="packagingOption"]:checked') !== null;
+    const isAppleSelected = document.querySelector('input[name="SelectedAppleName"]:checked') !== null;
+    const isRawmustSelected = document.querySelector('input[name="SelectedPackageName"][value="Råmust"]:checked') !== null;
+    const isBibSelected = document.querySelector('input[name="SelectedPackageName"][value="BagInBox"]:checked') !== null;
     const isWeightEntered = document.getElementById('inputWeight').value.trim() !== '';
 
-    console.log(isAppleSelected, isPackagingSelected, isWeightEntered)
+    console.log(isAppleSelected);
+    console.log(isRawmustSelected);
+    console.log(isBibSelected);
+    console.log(isWeightEntered);
 
-    btnSubmitGuide.disabled = !(isAppleSelected && isPackagingSelected && isWeightEntered);
+
+    btnSubmitGuide.disabled = !(isAppleSelected && (isRawmustSelected || isBibSelected) && isWeightEntered);
 }
+
 
 /**
  * Kontrollerar om inmatad vikt är godkänd

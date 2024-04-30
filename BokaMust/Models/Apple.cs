@@ -15,7 +15,7 @@ namespace BokaMust.Models
                 return int.TryParse(WeightInput, out weight) ? weight : 0;
             }
         }
-        [Range(30, 500, ErrorMessage = "Vikt måste vara mellan 30 och 500")]
+        [Range(30, 500, ErrorMessage = "Vikten måste vara mellan 30 och 500")]
 
         public AppleDescription Description { get; set; }
         public AppleHarvestMonth HarvestMonth { get; set; }
@@ -47,7 +47,6 @@ namespace BokaMust.Models
             new Apple { Name = "Cox Orange", Description = AppleDescription.Smakrik, HarvestMonth = AppleHarvestMonth.Oktober },
             new Apple { Name = "Discovery", Description = AppleDescription.Smakrik, HarvestMonth = AppleHarvestMonth.Augusti },
             new Apple { Name = "Frida", Description = AppleDescription.Syrlig, HarvestMonth = AppleHarvestMonth.November },
-            new Apple { Name = "Gravenstiener", Description = AppleDescription.Syrlig, HarvestMonth = AppleHarvestMonth.September },
             new Apple { Name = "Ingrid-Marie", Description = AppleDescription.Frisk, HarvestMonth = AppleHarvestMonth.Oktober },
             new Apple { Name = "Rubinola", Description = AppleDescription.Söt, HarvestMonth = AppleHarvestMonth.Oktober },
             new Apple { Name = "Signe Tilisch", Description = AppleDescription.Söt, HarvestMonth = AppleHarvestMonth.Oktober },

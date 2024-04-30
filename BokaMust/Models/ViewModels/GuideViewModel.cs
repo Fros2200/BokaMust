@@ -1,24 +1,27 @@
 ﻿namespace BokaMust.Models.ViewModels
 {
     public class GuideViewModel
-    {     
+    {
         public int Price { get; set; }
         public Apple SelectedApple { get; set; }
-        public Package SelectedPackage { get; set; }
+        public Packaging SelectedPackage { get; set; }
 
         public GuideViewModel()
         {
             SelectedApple = new Apple();
-            SelectedPackage = new Package();
+            SelectedPackage = new Packaging();
+            Price = CalculatePrice(SelectedApple, SelectedPackage); 
         }
 
-        public int CalculatePrice()
+        
+
+        public int CalculatePrice(Apple selectedApple, Packaging selectedPackage)
         {
             if (SelectedApple != null && SelectedPackage != null)
             {
                 int weight = SelectedApple.Weight;
-                int cost = SelectedPackage.Cost;
-                return weight * cost;
+                var cost = SelectedPackage.Cost;
+                return 0; 
             }
             return 0; 
         }
