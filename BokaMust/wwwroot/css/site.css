@@ -18,6 +18,12 @@ html {
   min-height: 100%;
 }
 
+header{
+    border-top-left-radius: 10px !important;
+    border-top-right-radius: 10px !important; 
+}
+
+
 body {
     margin-bottom: 60px;
     background-color:lightgray; 
