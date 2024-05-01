@@ -1,31 +1,29 @@
-﻿namespace BokaMust.Models.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BokaMust.Models.ViewModels
 {
     public class GuideViewModel
     {
-        public int Price { get; set; }
-        public Apple SelectedApple { get; set; }
-        public Packaging SelectedPackage { get; set; }
+        public List<Apple> Apples { get; set; } = new List<Apple>();
+        public List<Package> Packages { get; set; } = new List<Package>();
 
-        public GuideViewModel()
+        [Required(ErrorMessage = "Välj en äppelsort")]
+        public string SelectedApple { get; set; }
+        [Required(ErrorMessage = "Välj en förpackningstyp")]
+        public string SelectedPackage { get; set; }
+        [Required]
+        [Range(30, int.MaxValue, ErrorMessage ="Minsta vikt är 30kg")]
+        public double Weight { get; set; }
+        public double Price { get; set; }
+
+        public Apple GetSelectedApple() 
         {
-            SelectedApple = new Apple();
-            SelectedPackage = new Packaging();
-            Price = CalculatePrice(SelectedApple, SelectedPackage); 
+            return Apples?.FirstOrDefault(a => a.Name == SelectedApple);
         }
 
-        
-
-        public int CalculatePrice(Apple selectedApple, Packaging selectedPackage)
+        public Package GetSelectedPackage() 
         {
-            if (SelectedApple != null && SelectedPackage != null)
-            {
-                int weight = SelectedApple.Weight;
-                var cost = SelectedPackage.Cost;
-                return 0; 
-            }
-            return 0; 
+            return Packages?.FirstOrDefault(p => p.Name == SelectedPackage);
         }
-        
     }
-
 }

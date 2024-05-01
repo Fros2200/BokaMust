@@ -1,75 +1,89 @@
 ﻿using BokaMust.Models;
 using BokaMust.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection;
+using System.Runtime.Intrinsics.Wasm;
 
 namespace BokaMust.Controllers
 {
     public class GuideController : Controller
     {
 
-        public IActionResult GuideForm()
+        private readonly List<Apple> _apples;
+        private readonly List<Package> _packages;
+
+        public GuideController()
         {
-            return View();
+            _apples = GetApples(); 
+            _packages = GetPackages();
         }
 
-        //public IActionResult GuideResults() 
-        //{
-        //    return View(); 
-        //}
+        private List<Apple> GetApples()
+        {
+            return new List<Apple>
+            {
+                new Apple ("Aroma", "Syrlig", "September"),
+                new Apple ("Cox Orange", "Smakrik", "Oktober"),
+                new Apple ("Discovery", "Smakrik", "Augusti"),
+                new Apple ("Frida", "Syrlig", "November" ),
+                new Apple ("Ingrid-Marie", "Frisk", "Oktober"),
+                new Apple ("Rubinola", "Söt", "Oktober"),
+                new Apple ("Signe Tilisch", "Söt","Oktober"),
+                new Apple ("Transparante Blanche", "Syrlig","Augusti"),
+                new Apple ("Åkerö", "Söt", "November"),
+            };
+        }
+
+        private List<Package> GetPackages() 
+        {
+            return new List<Package>
+            {
+                new Package ("Råmust", 18),
+                new Package ("Bag-in-box", 28),
+            }; 
+        }
+
+        [HttpGet]
+        public IActionResult GuideForm()
+        {
+            var viewModel = new GuideViewModel
+            {
+                Apples = _apples,
+                Packages = _packages
+            };
+            return View(viewModel);
+        }
+
 
         [HttpPost]
         public IActionResult GuideResults(GuideViewModel guideViewModel)
         {
-            string appleName = guideViewModel.SelectedApple.Name;
-            int weight = guideViewModel.SelectedApple.Weight; 
-            string packageName = guideViewModel.SelectedPackage.Name;
-            int cost = guideViewModel.SelectedPackage.Cost;
 
+            if (!ModelState.IsValid)
+            {
+                guideViewModel.Apples = GetApples();
+                guideViewModel.Packages = GetPackages();
 
-            //if(guideViewModel.SelectedApple.Weight < 30)
-            //{
-            //    ModelState.AddModelError("SelectedApple.Weight", "Vikten måste vara minst 30kg");
-            //    return View(guideViewModel);
-            //}
+                return View("GuideForm", guideViewModel);
+            }
 
-            return View(guideViewModel);
+            guideViewModel.Apples = GetApples();
+            guideViewModel.Packages = GetPackages();
+            guideViewModel.Price = CalculatePrice(guideViewModel.SelectedPackage, guideViewModel.Weight);
+
+            return View("GuideResults", guideViewModel);
         }
 
-
-        //public IActionResult GuideResults(GuideViewModel guideViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        ViewData["UserInput"] = guideViewModel;
-        //        return View("Success");
-        //    }
-        //    else
-        //    {
-        //        return View(guideViewModel);
-        //    }
-        //}
-
-
-            //[HttpPost]
-            //public IActionResult Save(GuideViewModel guideViewModel)
-            //{
-            //    //string selectedZone = guideViewModel.SelectedZone;
-            //    string selectedApple = guideViewModel.SelectedApple;
-            //    string selectedPackaging = guideViewModel.SelectedPackaging;
-            //    decimal weight = guideViewModel.Weight;
-
-            //    string result = $"Du vill musta {weight}kg av {selectedApple} och förpacka din must som {selectedPackaging}";
-
-            //    return View("GuideResults", result);
-            //}
-
-
-
-
-
-            public void GetAppleData()
+        private double CalculatePrice(string selectedPackage, double weight)
         {
+            var package = GetPackages().FirstOrDefault(p => p.Name == selectedPackage);
+            if (package != null)
+            {
+                //Jag har valt 60% av vikten då man generellt får ut 50-70% av fruktens vikt i must
+                return 0.6 * weight * package.Cost;
+            }
 
+            return 0; 
         }
     }
 }

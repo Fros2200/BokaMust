@@ -1,20 +1,30 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel 
 
-<div class="container-guide-results">
-    <h2>Ditt resultat</h2>
-    <p>
-        Baserat på informationen du matat in så har vi gjort följande beräkning.
-        Observera att resultatet är ungefärligt.
-    </p>
+<body>
+    <div class="container-guide-results">
+        <div>
+            <h4>Ditt resultat</h4>
+            <p>
+                Baserat på informationen du matat in så har vi gjort följande beräkning.
+                Observera att resultatet är ungefärligt.
+            </p>
+        </div>
 
-    <p>Namn: @Model.SelectedApple.Name</p>
-    <p>Vikt: @Model.SelectedApple.Weight</p>
-    <p>Smak: @Model.SelectedApple.Description</p>
-    <p>Mognadstid: @Model.SelectedApple.HarvestMonth</p>
-    <p>Förpackning: @Model.SelectedPackage.Name</p>
-    <p>Pris per liter: @Model.SelectedPackage.Cost</p>
-    <p>Total kostnad: @Model.Price</p>
+        <div>
+            <h4>Vald äppelsort:</h4>
+            <p>Namn: @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald")</p>
+            <p>Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig")</p>
+            <p>Mognadstid: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
+        </div>
 
+        <div>
+            <h4>Vald förpackningstyp:</h4>
+            <p>Förpackning: @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald")</p>
+            <p>Pris per liter: @Model.GetSelectedPackage()?.Cost kr</p>
+            <p>Vikt: @Model.Weight kg</p>
+            <p>Total kostnad: @Model.Price kr</p>
+        </div>
 
-    <button type="button" id="btn-close-guide"><a class="btn" asp-area="" asp-controller="Home" asp-action="Index">Stäng</a></button>
-</div>
+        <a href="/" class="btn" id="btn-close-guide">Stäng</a>
+    </div>
+</body>

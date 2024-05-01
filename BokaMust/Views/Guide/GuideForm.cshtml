@@ -1,77 +1,56 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel
 
-<h4>Mustguiden</h4>
-<p>Här får du en guide till äppelmustningen</p>
+<body>
+    <h4>Mustguiden</h4>
+    <p>Här får du en guide till äppelmustningen</p>
 
-<form id="guideForm" asp-area="" asp-controller="Guide" asp-action="GuideResults" method="post">
+    <form id="guideForm" asp-action="GuideResults" method="post" onsubmit="return validateForm()">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <fieldset>
+            <legend>Ange din äppelsort</legend>
+            <br />
+            <br />
+            <div class="d-flex flex-wrap">
+                @foreach (var apple in Model.Apples)
+                {
+                    <div class="col-4 p-0">
+                        <label class="btn btn-outline-primary btn-block m-0">
+                            <input type="radio" name="SelectedApple" autocomplete="off" value="@apple.Name" class="m-0"> @apple.Name
+                        </label>
+                    </div>
+                }
+            </div>
+        </fieldset>
 
-  @*   <div>
-        <label>Ange din äppelsort</label>
         <br />
-        <select id="appleDropdown" asp-for="SelectedApple.Name">
-            <option value="" selected disabled>Välj</option>
-            @foreach (var apple in AppleRepository.AllApples)
-            {
-                <option value="@apple.Name">@apple.Name</option>
-            }
-        </select>
-    </div> *@
 
-@*     <div>
-        <label>Hur vill du att din must förpackas?</label>
-        <br />
-        @foreach (var packaging in PackagingRepository.AllPackages)
-        {
-            <div>
-                <label>
-                    <input type="radio" name="SelectedPackage.Name" value="@packaging.Name" />
-                    @packaging.Name
+        <fieldset>
+            <legend>Hur vill du att din must förpackas?</legend>
+            <br />
+            <br />
+            <div class="custom-radio">
+                <label id="bib" class="btn btn-outline-primary">
+                    <input type="radio" name="SelectedPackage" autocomplete="off" value="Bag-in-box"> Bag-in-box <i class="fas fa-box ml-1"></i>
+                </label>
+                <label id="rawmust" class="btn btn-outline-primary">
+                    <input type="radio" name="SelectedPackage" autocomplete="off" value="Råmust"> Råmust <i class="fas fa-box ml-1"></i>
                 </label>
             </div>
-        }
-    </div> *@
+        </fieldset>
 
-    <div>
-        <label>Ange din äppelsort</label>
-        <br />
-        <br/>
-        <div class="d-flex flex-wrap">
-            @foreach (var apple in AppleRepository.AllApples)
-            {
-                <div class="col-4 p-0">
-                    <label class="btn btn-outline-primary btn-block m-0">
-                        <input type="radio" name="SelectedAppleName" autocomplete="off" value="@apple.Name" class="m-0"> @apple.Name
-                    </label>
-                </div>
-            }
+        <div>
+            <label for="weight">Hur mycket äpplen vill du musta? (kg)</label>
+            <br />
+            <br />
+            <input type="text" id="weight" name="Weight" required placeholder="Minsta vikt 30kg">
+            <br />
+            <br />
+            <button type="submit" class="btn" id="btnSubmitGuide" disabled>Beräkna</button>
         </div>
-    </div>
-    <br />
+    </form>
+</body>
 
-    <div>
-        <label>Hur vill du att din must förpackas?</label>
-        <br />
-        <br />
-        <div class="custom-radio">
-            <label id="rawmust" class="btn btn-outline-primary">
-                <input type="radio" name="SelectedPackageName" autocomplete="off" value="Råmust"> Råmust <i class="fas fa-box ml-1"></i>
-            </label>
-            <label id="bib" class="btn btn-outline-primary">
-                <input type="radio" name="SelectedPackageName" autocomplete="off" value="BagInBox"> BagInBox <i class="fas fa-box ml-1"></i>
-            </label>
-        </div>
-    </div>
 
-    <div id="weight">
-        <label>Hur mycket äpplen vill du musta?</label>
-        <br />
-        <br />
-        <input type="text" id="inputWeight" asp-for="SelectedApple.WeightInput">
-        <p>Ange vikt i kg, minsta vikt 30kg</p> 
-        <br />
-        <button type="submit" class="btn" id="btnSubmitGuide">Beräkna</button>
-    </div>
-</form> 
 
 
 

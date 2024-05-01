@@ -2,26 +2,27 @@
     ViewData["Title"] = "Home Page";
 }
 
-
-<div id="container-banner">
-    <img id="apples-banner" src="/img/applesOnTree.jpg" alt="Bild på äpplen" />
-</div>
-    
-<div class="main-content">
-    <h3>Vi mustar dina äpplen</h3>
-    <p>Vi pressar god äppelmust av dina egna medhavna äpplen. Must av 100% äpple, inga tillsatser!</p>
-
-    <div id="guide-info">
-        <p>Behöver du lite hjälp på vägen? Använd vår guide och få mer information om hur mustningen går till</p>
-        <a class="btn" asp-area="" asp-controller="Guide" asp-action="GuideForm">Guide</a>
+<div class=background>
+    <div id="container-banner">
+        <img id="apples-banner" src="/img/applesOnTree.jpg" alt="Bild på äpplen" />
     </div>
 
-    <div id="booking-info">
-        <p>Här kan du boka tid till vårt musteri</p>
-        <a class="btn" asp-area="" asp-controller="Booking" asp-action="BookingForm">Boka mustning</a>
-    </div>
+    <div class="main-content">
+        <h3>Vi mustar dina äpplen</h3>
+        <p>Vi pressar god äppelmust av dina egna medhavna äpplen. Must av 100% äpple, inga tillsatser!</p>
 
+        <div id="guide-info">
+            <p>Behöver du lite hjälp på vägen? Använd vår guide och få mer information om hur mustningen går till</p>
+            <a class="btn" asp-area="" asp-controller="Guide" asp-action="GuideForm">Guide</a>
+        </div>
+
+        <div id="booking-info">
+            <p>Här kan du boka tid till vårt musteri</p>
+            <a class="btn" asp-area="" asp-controller="Booking" asp-action="BookingForm">Boka mustning</a>
+        </div>
+    </div>
 </div>
+
 
 
 

@@ -1,34 +1,36 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel
 
+<body>
+    <div>
+        <h4>Hitta tid för mustning</h4>
 
-<div>
-    <h4>Hitta tid för mustning</h4>
+        <form id="bookingForm" asp-area="" asp-controller="Booking" asp-action="Calendar" method="post">
+            <div id="weight">
+                <label>Hur mycket äpplen vill du musta?</label>
+                <br />
+                <input type="text" id="inputWeightBooking" name="weight" asp-formaction="Weight">
+                <p>Ange vikt i kg, minsta vikt 30kg</p>
+                <br />
+            </div>
 
-    <form id="bookingForm" asp-area="" asp-controller="Booking" asp-action="Calendar" method="post">
-        <div id="weight">
-            <label>Hur mycket äpplen vill du musta?</label>
-            <br />
-            <input type="text" id="inputWeightBooking" name="weight" asp-formaction="Weight">
-            <p>Ange vikt i kg, minsta vikt 30kg</p>
-            <br />
-        </div>
-
-        <div>
-            <label>Hur vill du att din must förpackas?</label>
-            <br />
-            <select id="packagingBooking" asp-for="SelectedPackage.Name">
+            <div>
+                <label>Hur vill du att din must förpackas?</label>
+                <br />
+                @*             <select id="packagingBooking" asp-for="SelectedPacking.name">
                 <option value="" selected disabled>Välj</option>
                 <option value="Bag-in-Box">Bag-in-Box</option>
                 <option value="Rawmust">Råmust</option>
-            </select>
-            <p>Vid råmust, medtag egna kärl</p>
-        </div>
-    
-        <div>
-            <button type="submit" class="btn" id="btnSubmitBooking">Hitta lediga tider</button>
-        </div>
-    </form>
+                </select>
+                <p>Vid råmust, medtag egna kärl</p> *@
+            </div>
 
-</div>
+            <div>
+                <button type="submit" class="btn" id="btnSubmitBooking">Hitta lediga tider</button>
+            </div>
+        </form>
+
+    </div>
+</body>
+
 
 
