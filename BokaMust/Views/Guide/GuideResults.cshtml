@@ -11,18 +11,24 @@
         </div>
 
         <div>
-            <h4>Vald äppelsort:</h4>
-            <p>Namn: @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald")</p>
-            <p>Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig")</p>
-            <p>Mognadstid: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
+            <h4>Vald äppelsort</h4>
+            <p>Dina äpplen är av sorten @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald") vilket är ett
+                @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott äpple.
+                @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald") mognar generellt i 
+                @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig") vilket betyder 
+                att det är dags för dig att boka tid för äppelmustning denna månad.
+            </p>
         </div>
 
         <div>
-            <h4>Vald förpackningstyp:</h4>
-            <p>Förpackning: @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald")</p>
-            <p>Pris per liter: @Model.GetSelectedPackage()?.Cost kr</p>
-            <p>Vikt: @Model.Weight kg</p>
-            <p>Total kostnad: @Model.Price kr</p>
+            <h4>Vald förpackningstyp</h4>
+            <p>
+                Du har angett att du önskar att dina äpplen förpackas som 
+                @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald"). Kostnaden per liter för 
+                @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") är @Model.GetSelectedPackage()?.Cost kr.
+                Genrellt sätt får man ut cirka 60% av fruktens vikt i must, 
+                vilket innebär att dina @Model.Weight kg kommer kosta ungefär @Model.Price kr att musta.
+            </p>
         </div>
 
         <a href="/" class="btn" id="btn-close-guide">Stäng</a>
