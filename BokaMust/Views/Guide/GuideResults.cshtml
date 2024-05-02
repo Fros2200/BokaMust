@@ -18,20 +18,40 @@
         </div>
 
         <div>
-            <h4>Vald förpackningstyp</h4>
-            <p><i class="fas fa-box"></i> @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
-            <p>Pastöriserad must i Bag-in-box är hållbar i rumstemperatur minst ett år. 
-               Öppnad förpackning bör förvaras i kylskåp och håller då 4 veckor</p>
+            <h4>Vald förpackningstyp & mängd</h4>
+            <p><i class="fa-solid fa-weight-scale"></i> Angiven vikt: @Model.Weight kg</p>
+            @if (Model.GetSelectedPackage()?.Name == "Bag-in-box")
+            {
+                <p><i class="fas fa-box"></i> @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
+                <p>
+                    Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
+                    vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must 
+                    ( ca @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald")).
+                    Pastöriserad must i Bag-in-box är hållbar i rumstemperatur minst ett år.
+                    Öppnad förpackning bör förvaras i kylskåp och håller då 4 veckor
+                </p>
+            } 
+            else if (Model.GetSelectedPackage()?.Name == "Råmust")
+            {
+                <p><i class="fas fa-bottle-water"></i> @Model.Volume liter @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
+                <p>
+                    Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
+                    vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must.
+                    Under denna mustning pastöriseras inte musten utan den pressas och tappas direkt på dina medhavda egna väl rengjorda kärl. 
+                    Råmusten är sedan hållbar ca 3-5 dagar alternativt upp till ett år i frysen.
+                </p>
+            } 
+            else
+            {
+                <p>Förpackningstyp saknas</p>
+            }
+            
         </div>
 
         <div>
-            <h4>Tidsåtgång och prisuppskattning</h4>
+            <h4>Tidsåtgång & prisuppskattning</h4>
             <p><i class="fa-solid fa-clock"></i> Tidsåtgång: @Model.SessionTime h</p>
-            <p><i class="fa-solid fa-weight-scale"></i> Vikt: @Model.Weight kg</p>
-            <p><i class="fa-solid fa-tag"></i> Genrellt sätt får man ut cirka 60% av fruktens vikt i must, 
-                vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must.
-                Detta innebär att du kommer få ca @Model.NumberOfBib st Bag-in-box med dig hem
-                som kommer kosta ungefär @Model.Price kr
+            <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr
             </p>
         </div>
 
