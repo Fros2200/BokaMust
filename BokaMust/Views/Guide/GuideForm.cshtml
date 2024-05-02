@@ -1,54 +1,56 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel
 
 <body>
-    @Html.Partial("_LoadingScreen")
-    <h4>Mustguiden</h4>
-    <p>Här får du en guide till äppelmustningen</p>
+    <div class="background-box">
+        @Html.Partial("_LoadingScreen")
+        <h4>Mustguiden</h4>
+        <p>Här får du en guide till äppelmustningen</p>
 
-    <form id="guideForm" asp-action="GuideResults" method="post" onsubmit="return validateForm()">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <fieldset>
-            <legend>Ange din äppelsort</legend>
-            <div class="custom-radio d-flex flex-wrap">
-                @foreach (var apple in Model.Apples)
-                {
-                    <div class="col-4 p-0">
-                        <input type="radio" id="@apple.Name" name="SelectedApple" autocomplete="off" value="@apple.Name" class="m-0" hidden>
-                        <label for="@apple.Name" class="btn btn-outline-primary btn-block m-0">@apple.Name</label>
-                    </div>
-                }
+        <form id="guideForm" asp-action="GuideResults" method="post" onsubmit="return validateForm()">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <fieldset>
+                <legend>Ange din äppelsort</legend>
+                <div class="custom-radio d-flex flex-wrap">
+                    @foreach (var apple in Model.Apples)
+                    {
+                        <div class="col-4 p-0">
+                            <input type="radio" id="@apple.Name" name="SelectedApple" autocomplete="off" value="@apple.Name" class="m-0" hidden>
+                            <label for="@apple.Name" class="@* btn *@ btn-outline-primary btn-block m-0">@apple.Name</label>
+                        </div>
+                    }
+                </div>
+            </fieldset>
+
+            <br />
+
+            <fieldset>
+                <legend>Hur vill du att din must förpackas?</legend>
+                <br />
+                <br />
+                <div class="custom-radio">
+                    <input type="radio" id="bagInBox" name="SelectedPackage" autocomplete="off" value="Bag-in-box" hidden>
+                    <label for="bagInBox" class="@* btn *@ btn-outline-primary">
+                        Bag-in-box <i class="fas fa-box"></i>
+                    </label>
+
+                    <input type="radio" id="rawMust" name="SelectedPackage" autocomplete="off" value="Råmust" hidden>
+                    <label for="rawMust" class="@* btn *@ btn-outline-primary">
+                        Råmust <i class="fas fa-bottle-water"></i>
+                    </label>
+                </div>
+            </fieldset>
+
+            <div>
+                <label for="weight">Hur mycket äpplen vill du musta? (kg)</label>
+                <br />
+                <br />
+                <input type="text" id="weight" name="Weight" required placeholder="Minsta vikt 30kg">
+                <br />
+                <br />
+                    <button type="submit" class="btn" id="btnSubmitGuide" disabled><i class="fa-solid fa-calculator"></i> Beräkna</button>
             </div>
-        </fieldset>
-
-        <br />
-
-        <fieldset>
-            <legend>Hur vill du att din must förpackas?</legend>
-            <br />
-            <br />
-            <div class="custom-radio">
-                <input type="radio" id="bagInBox" name="SelectedPackage" autocomplete="off" value="Bag-in-box" hidden>
-                <label for="bagInBox" class="btn btn-outline-primary">
-                    Bag-in-box <i class="fas fa-box"></i>
-                </label>
-
-                <input type="radio" id="rawMust" name="SelectedPackage" autocomplete="off" value="Råmust" hidden>
-                <label for="rawMust" class="btn btn-outline-primary">
-                    Råmust <i class="fas fa-bottle-water"></i>
-                </label>
-            </div>
-        </fieldset>
-
-        <div>
-            <label for="weight">Hur mycket äpplen vill du musta? (kg)</label>
-            <br />
-            <br />
-            <input type="text" id="weight" name="Weight" required placeholder="Minsta vikt 30kg">
-            <br />
-            <br />
-            <button type="submit" class="btn" id="btnSubmitGuide" disabled><i class="fa-solid fa-calculator"></i> Beräkna</button>
-        </div>
-    </form>
+        </form>
+    </div>  
 </body>
 
 

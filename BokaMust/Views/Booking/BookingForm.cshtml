@@ -1,34 +1,41 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel
 
 <body>
-    <div>
+    <div class="background-box">
         <h4>Hitta tid för mustning</h4>
 
-        <form id="bookingForm" asp-area="" asp-controller="Booking" asp-action="Calendar" method="post">
+        <form id="bookingForm" asp-action="Calendar" method="post">
+
             <div id="weight">
-                <label>Hur mycket äpplen vill du musta?</label>
+                <label for="weight">Hur mycket äpplen vill du musta? (kg)</label>
                 <br />
-                <input type="text" id="inputWeightBooking" name="weight" asp-formaction="Weight">
-                <p>Ange vikt i kg, minsta vikt 30kg</p>
+                <br />
+                <input type="text" id="weight" name="Weight" required placeholder="Minsta vikt 30kg">
+                <br />
                 <br />
             </div>
 
-            <div>
-                <label>Hur vill du att din must förpackas?</label>
+            <fieldset>
+                <legend>Hur vill du att din must förpackas?</legend>
                 <br />
-                @*             <select id="packagingBooking" asp-for="SelectedPacking.name">
-                <option value="" selected disabled>Välj</option>
-                <option value="Bag-in-Box">Bag-in-Box</option>
-                <option value="Rawmust">Råmust</option>
-                </select>
-                <p>Vid råmust, medtag egna kärl</p> *@
-            </div>
+                <br />
+                <div class="custom-radio">
+                    <input type="radio" id="bagInBox" name="SelectedPackage" autocomplete="off" value="Bag-in-box" hidden>
+                    <label for="bagInBox" class="btn btn-outline-primary">
+                        Bag-in-box <i class="fas fa-box"></i>
+                    </label>
+
+                    <input type="radio" id="rawMust" name="SelectedPackage" autocomplete="off" value="Råmust" hidden>
+                    <label for="rawMust" class="btn btn-outline-primary">
+                        Råmust <i class="fas fa-bottle-water"></i>
+                    </label>
+                </div>
+            </fieldset>
 
             <div>
                 <button type="submit" class="btn" id="btnSubmitBooking">Hitta lediga tider</button>
             </div>
         </form>
-
     </div>
 </body>
 
