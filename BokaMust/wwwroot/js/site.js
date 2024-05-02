@@ -2,6 +2,7 @@
 
 
 // === Eventlisteners ===
+
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('guideForm');
     const submitBtn = document.getElementById('btnSubmitGuide');
@@ -12,6 +13,16 @@ document.addEventListener('DOMContentLoaded', function () {
         form.addEventListener('input', updateButtonState);
     }
 });
+
+/*Eventlistner som lyssnar efter när formuläret submittas*/
+document.addEventListener('DOMContentLoaded', function () {
+    var form = document.getElementById('guideForm');
+ 
+    if (form) {
+        form.addEventListener('submit', handleSubmit);
+    }
+});
+
 
 
 // === Anrop ===
@@ -37,6 +48,17 @@ function validateForm() {
         alert('Minsta godkända vikt är 30kg');
         return false;
     }
-
     return true;
+}
+
+/**
+ * Funktion som visar min loading vy och sedan använder en timer för att skicka mitt formlär efter vald tidsfördröjning
+ */
+function handleSubmit(event) {
+    event.preventDefault(); 
+    document.getElementById('loadingScreen').style.display = 'block';
+
+    setTimeout(function () {
+        event.target.submit();  
+    }, 5000); 
 }

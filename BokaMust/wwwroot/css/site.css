@@ -37,7 +37,7 @@ body {
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #8CA970;
+    background-color: #8CA970; /*Min gröna bakgrundsfärg*/
 }
 
 .background {
@@ -141,8 +141,45 @@ footer {
 
 /* STIL FÖR GUIDERESULTS */
 .container-guide-results {
-    padding: 20px;
-    
+    padding: 20px; 
 }
+
+/* STIL för LoadingScreen*/
+#loadingScreen {
+    z-index: 1000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    background-color: #8CA970;
+}
+
+@keyframes blink {
+    50% {
+        color: white;
+    }
+}
+
+.fas.fa-apple-alt {
+    font-size: 60px;
+    color: #E00000;
+    margin: 10px;
+    animation: blink 1.5s step-start infinite;
+}
+
+    .fas.fa-apple-alt:nth-child(2) {
+        animation-delay: 0.5s;
+    }
+
+    .fas.fa-apple-alt:nth-child(3) {
+        animation-delay: 1s;
+    }
 
 /*STIL FÖR BOKA*/
