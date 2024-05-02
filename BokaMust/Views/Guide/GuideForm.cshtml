@@ -8,15 +8,12 @@
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <fieldset>
             <legend>Ange din äppelsort</legend>
-            <br />
-            <br />
-            <div class="d-flex flex-wrap">
+            <div class="custom-radio d-flex flex-wrap">
                 @foreach (var apple in Model.Apples)
                 {
                     <div class="col-4 p-0">
-                        <label class="btn btn-outline-primary btn-block m-0">
-                            <input type="radio" name="SelectedApple" autocomplete="off" value="@apple.Name" class="m-0"> @apple.Name
-                        </label>
+                        <input type="radio" id="@apple.Name" name="SelectedApple" autocomplete="off" value="@apple.Name" class="m-0" hidden>
+                        <label for="@apple.Name" class="btn btn-outline-primary btn-block m-0">@apple.Name</label>
                     </div>
                 }
             </div>
