@@ -144,6 +144,10 @@ footer {
     padding: 20px; 
 }
 
+.frame {
+    border: 2px solid black; 
+}
+
 /* STIL för LoadingScreen*/
 #loadingScreen {
     z-index: 1000;

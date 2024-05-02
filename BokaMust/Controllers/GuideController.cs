@@ -22,15 +22,15 @@ namespace BokaMust.Controllers
         {
             return new List<Apple>
             {
-                new Apple ("Aroma", "syrligt", "September"),
-                new Apple ("Cox Orange", "smakrikt", "Oktober"),
-                new Apple ("Discovery", "smakrikt", "Augusti"),
-                new Apple ("Frida", "syrligt", "November" ),
-                new Apple ("Ingrid-Marie", "friskt", "Oktober"),
-                new Apple ("Rubinola", "sött", "Oktober"),
-                new Apple ("Signe Tilisch", "sött","Oktober"),
-                new Apple ("Transparante Blanche", "syrligt","Augusti"),
-                new Apple ("Åkerö", "sött", "November"),
+                new Apple ("Aroma", "Syrligt", "September"),
+                new Apple ("Cox Orange", "Smakrikt", "Oktober"),
+                new Apple ("Discovery", "Smakrikt", "Augusti"),
+                new Apple ("Frida", "Syrligt", "November" ),
+                new Apple ("Ingrid-Marie", "Friskt", "Oktober"),
+                new Apple ("Rubinola", "Sött", "Oktober"),
+                new Apple ("Signe Tilisch", "Sött","Oktober"),
+                new Apple ("Transparante Blanche", "Syrligt","Augusti"),
+                new Apple ("Åkerö", "Sött", "November"),
             };
         }
 

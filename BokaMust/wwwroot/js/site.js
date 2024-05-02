@@ -60,5 +60,5 @@ function handleSubmit(event) {
 
     setTimeout(function () {
         event.target.submit();  
-    }, 5000); 
+    }, 1000); 
 }
