@@ -17,6 +17,8 @@ namespace BokaMust.Models.ViewModels
         public double Price { get; set; }
         public double Volume { get; set; }
         public double NumberOfBib { get; set; }
+        public double SessionTime { get; set; }
+
 
         public Apple GetSelectedApple() 
         {

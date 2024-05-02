@@ -71,6 +71,7 @@ namespace BokaMust.Controllers
             guideViewModel.Packages = GetPackages();
             guideViewModel.Volume = CalculateVolume(guideViewModel.SelectedPackage, guideViewModel.Weight);
             guideViewModel.Price = CalculatePrice(guideViewModel.SelectedPackage, guideViewModel.Volume);
+            guideViewModel.SessionTime = CalculateSessionTime(guideViewModel.Weight); 
 
             if(guideViewModel.SelectedPackage != null && guideViewModel.SelectedPackage == "Bag-in-box")
             {
@@ -88,7 +89,7 @@ namespace BokaMust.Controllers
             {
                 //Jag har valt 60% av vikten då man generellt får ut 50-70% av fruktens vikt i must
                 //Denna funktion skulle man kunna bygga ut och göra mer dynamisk baserat på vald äpplesort etc
-                return 0.6 * weight;
+                return Math.Round(0.6 * weight);
             }
             return 0;
         }
@@ -104,9 +105,38 @@ namespace BokaMust.Controllers
             return 0; 
         }
 
+        private double CalculateSessionTime(double weight)
+        {
+
+            if (weight <= 100)
+            {
+                return 0.5; 
+            }
+            else if(weight <= 199)
+            {
+                return 1; 
+            }
+            else if (weight <= 299)
+            {
+                return 2;
+            }
+            else if (weight <= 399)
+            {
+                return 3;
+            }
+            else if (weight <= 499)
+            {
+                return 4;
+            }
+            else
+            {
+                return 0; 
+            }
+        }
+
         private double CalculateNumOfBib(double volume)
         {
-            return volume / 3; 
+            return Math.Round(volume / 3); 
         }
 
     }

@@ -15,8 +15,8 @@
             <p>Dina äpplen är av sorten @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald") vilket är ett
                 @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott äpple.
                 @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald") mognar generellt i 
-                @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig") vilket betyder 
-                att det är dags för dig att boka tid för äppelmustning denna månad.
+                @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig") så se till att boka
+                tid för äppelmustning under den perioden. 
             </p>
         </div>
 
@@ -24,11 +24,18 @@
             <h4>Vald förpackningstyp</h4>
             <p>
                 Du har angett att du önskar att dina äpplen förpackas som 
-                @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald"). Kostnaden per liter för 
-                @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") är @Model.GetSelectedPackage()?.Cost kr.
-                Genrellt sätt får man ut cirka 60% av fruktens vikt i must, 
-                vilket innebär att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must
-                som kommer kosta ungefär @Model.Price kr att musta. Detta innebär att du kommer få ca @Model.NumberOfBib Bag-in-box med dig hem.
+                @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald"). 
+            </p>
+        </div>
+
+        <div>
+            <h4>Tidsåtgång och prisuppskattning</h4>
+            <p>
+                Dina @Model.Weight kg kommer ta @Model.SessionTime h att musta. 
+                Kostnaden per liter för @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") är @Model.GetSelectedPackage()?.Cost kr.
+                Genrellt sätt får man ut cirka 60% av fruktens vikt i must, vilket innebär att dina @Model.Weight kg kommer bli 
+                ungefär @Model.Volume liter must. Detta innebär att du kommer få ca @Model.NumberOfBib st Bag-in-box med dig hem
+                som kommer kosta ungefär @Model.Price kr.
             </p>
         </div>
 
