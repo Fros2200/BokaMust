@@ -29,11 +29,14 @@
             <br />
             <br />
             <div class="custom-radio">
-                <label id="bib" class="btn btn-outline-primary">
-                    <input type="radio" name="SelectedPackage" autocomplete="off" value="Bag-in-box"> Bag-in-box <i class="fas fa-box ml-1"></i>
+                <input type="radio" id="bagInBox" name="SelectedPackage" autocomplete="off" value="Bag-in-box" hidden>
+                <label for="bagInBox" class="btn btn-outline-primary">
+                    Bag-in-box <i class="fas fa-box"></i>
                 </label>
-                <label id="rawmust" class="btn btn-outline-primary">
-                    <input type="radio" name="SelectedPackage" autocomplete="off" value="Råmust"> Råmust <i class="fas fa-box ml-1"></i>
+
+                <input type="radio" id="rawMust" name="SelectedPackage" autocomplete="off" value="Råmust" hidden>
+                <label for="rawMust" class="btn btn-outline-primary">
+                    Råmust <i class="fas fa-bottle-water"></i>
                 </label>
             </div>
         </fieldset>
@@ -45,10 +48,11 @@
             <input type="text" id="weight" name="Weight" required placeholder="Minsta vikt 30kg">
             <br />
             <br />
-            <button type="submit" class="btn" id="btnSubmitGuide" disabled>Beräkna</button>
+            <button type="submit" class="btn" id="btnSubmitGuide" disabled><i class="fa-solid fa-calculator"></i> Beräkna</button>
         </div>
     </form>
 </body>
+
 
 
 

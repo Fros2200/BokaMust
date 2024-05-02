@@ -104,6 +104,7 @@ footer {
 
 /*STIL FÖR GUIDE*/
 
+/*Skapar rutmönstret för äppleknapparna*/
 .btn-block {
     display: flex;
     align-items: center;
@@ -111,6 +112,32 @@ footer {
     height: 100%;
 }
 
+/*radioknapparna i formuläret*/
+.custom-radio input[type="radio"] {
+    position: absolute;
+    clip: rect(0,0,0,0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+.custom-radio label {
+    cursor: pointer; 
+    padding: 10px; 
+    border: 1px solid #007bff;
+}
+
+.custom-radio label:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.custom-radio input[type="radio"]:checked + label {
+    border-color: black;
+    border-width: 3px; 
+    background-color: lightgoldenrodyellow;
+    color: black;
+}
 
 /* STIL FÖR GUIDERESULTS */
 .container-guide-results {
