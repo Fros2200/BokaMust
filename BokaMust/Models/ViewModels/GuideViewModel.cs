@@ -15,6 +15,8 @@ namespace BokaMust.Models.ViewModels
         [Range(30, int.MaxValue, ErrorMessage ="Minsta vikt är 30kg")]
         public double Weight { get; set; }
         public double Price { get; set; }
+        public double Volume { get; set; }
+        public double NumberOfBib { get; set; }
 
         public Apple GetSelectedApple() 
         {

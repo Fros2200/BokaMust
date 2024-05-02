@@ -69,21 +69,45 @@ namespace BokaMust.Controllers
 
             guideViewModel.Apples = GetApples();
             guideViewModel.Packages = GetPackages();
-            guideViewModel.Price = CalculatePrice(guideViewModel.SelectedPackage, guideViewModel.Weight);
+            guideViewModel.Volume = CalculateVolume(guideViewModel.SelectedPackage, guideViewModel.Weight);
+            guideViewModel.Price = CalculatePrice(guideViewModel.SelectedPackage, guideViewModel.Volume);
+
+            if(guideViewModel.SelectedPackage != null && guideViewModel.SelectedPackage == "Bag-in-box")
+            {
+                guideViewModel.NumberOfBib = CalculateNumOfBib(guideViewModel.Volume);
+            }
+            
 
             return View("GuideResults", guideViewModel);
         }
 
-        private double CalculatePrice(string selectedPackage, double weight)
+        private double CalculateVolume(string selectedPackage, double weight)
+        {
+            var package = GetPackages().FirstOrDefault(m => m.Name == selectedPackage);
+            if (package != null)
+            {
+                //Jag har valt 60% av vikten då man generellt får ut 50-70% av fruktens vikt i must
+                //Denna funktion skulle man kunna bygga ut och göra mer dynamisk baserat på vald äpplesort etc
+                return 0.6 * weight;
+            }
+            return 0;
+        }
+
+        private double CalculatePrice(string selectedPackage, double volume)
         {
             var package = GetPackages().FirstOrDefault(p => p.Name == selectedPackage);
             if (package != null)
             {
-                //Jag har valt 60% av vikten då man generellt får ut 50-70% av fruktens vikt i must
-                return 0.6 * weight * package.Cost;
+                return volume * package.Cost;
             }
 
             return 0; 
         }
+
+        private double CalculateNumOfBib(double volume)
+        {
+            return volume / 3; 
+        }
+
     }
 }

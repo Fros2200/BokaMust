@@ -27,7 +27,8 @@
                 @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald"). Kostnaden per liter för 
                 @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") är @Model.GetSelectedPackage()?.Cost kr.
                 Genrellt sätt får man ut cirka 60% av fruktens vikt i must, 
-                vilket innebär att dina @Model.Weight kg kommer kosta ungefär @Model.Price kr att musta.
+                vilket innebär att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must
+                som kommer kosta ungefär @Model.Price kr att musta. Detta innebär att du kommer få ca @Model.NumberOfBib Bag-in-box med dig hem.
             </p>
         </div>
 
