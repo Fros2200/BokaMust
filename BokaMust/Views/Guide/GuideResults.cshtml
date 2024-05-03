@@ -2,7 +2,7 @@
 
 <body>
     <div class="background-box">
-        <div>
+        <div class="dynamic-div">
             <h4>Ditt resultat</h4>
             <p>
                 Baserat på informationen du matat in så har vi gjort följande beräkning.
@@ -10,15 +10,15 @@
             </p>
         </div>
 
-        <div>
-            <h4>Vald äppelsort</h4>
+        <div class="dynamic-div">
+            <h4>Äppelsort</h4>
             <p><i class="fa-solid fa-apple-whole"></i> Namn: @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald")</p>
-            <i class="fa-solid fa-info"></i> Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott</p>
+            <p><i class="fa-solid fa-info"></i> Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott</p>
             <p><i class="fa-solid fa-calendar"></i> Mognadstid: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
         </div>
 
-        <div>
-            <h4>Vald förpackningstyp & mängd</h4>
+        <div class="dynamic-div">
+            <h4>Förpackningstyp & mängd</h4>
             <p><i class="fa-solid fa-weight-scale"></i> Angiven vikt: @Model.Weight kg</p>
             @if (Model.GetSelectedPackage()?.Name == "Bag-in-box")
             {
@@ -37,7 +37,7 @@
                 <p>
                     Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
                     vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must.
-                    Under denna mustning pastöriseras inte musten utan den pressas och tappas direkt på dina medhavda egna väl rengjorda kärl. 
+                    Råmusten pastöriseras inte utan den pressas och tappas direkt på dina medhavda egna väl rengjorda kärl. 
                     Råmusten är sedan hållbar ca 3-5 dagar alternativt upp till ett år i frysen.
                 </p>
             } 
@@ -45,16 +45,16 @@
             {
                 <p>Förpackningstyp saknas</p>
             }
-            
         </div>
 
-        <div>
-            <h4>Tidsåtgång & prisuppskattning</h4>
+        <div class="dynamic-div">
+            <h4>Tidsåtgång & pris</h4>
             <p><i class="fa-solid fa-clock"></i> Tidsåtgång: @Model.SessionTime h</p>
-            <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr
-            </p>
+            <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr </p>
         </div>
 
-        <a href="/" class="btn" id="btn-close-guide">Stäng</a>
+        <div class="btn-container">
+            <a href="/" class="btn" id="btn-close-guide">Stäng</a>
+        </div>
     </div>
 </body>

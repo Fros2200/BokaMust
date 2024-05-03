@@ -67,41 +67,70 @@ footer {
     margin: 10px
 }
 
-/*STIL FÖR HEM*/
+/*STIL FÖR INDEX*/
+
+.background h4{
+    font-size:20px;
+}
+
+#apples-img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom: 2px solid #313A27;
+}
+
 #container-banner {
-    padding: 20px;
-    margin-bottom: 20px;
-    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    margin-bottom: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     background-color: var(--background-color);
 }
 
-#apples-banner {
-    max-width: 100%;
-    max-height: 100%;
-    padding-bottom:30px; 
+#container-banner p {
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .background-box {
     padding: 20px 20px 0px 20px;
     border-radius:10px; 
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background-color: var(--background-color);
+}
+
+.background-box p {
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .btn-container{
     display:flex;
     justify-content:flex-end; 
+
 }
 
 .btn {
     background-color: white;
     color: black;
-    margin-bottom: 15px;
     font-size: 16px;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px; 
     border-radius: 8px;
     cursor: pointer;
 }
+
+.btn:hover {
+    background-color: cornflowerblue;
+    color: white;
+}
+
 
 /*STIL FÖR GUIDE*/
 
@@ -123,27 +152,48 @@ footer {
     overflow: hidden;
 }
 .custom-radio label {
-    cursor: pointer; 
-    padding: 10px; 
-    border: 1px solid #007bff;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #313A27;
 }
 
 .custom-radio label:hover {
-    background-color: #007bff;
+    background-color: cornflowerblue;
     color: white;
 }
 
 .custom-radio input[type="radio"]:checked + label {
-    border-color: black;
-    border-width: 3px; 
-    background-color: lightgoldenrodyellow;
+    border: 2px solid black; 
+    background-color: lightsteelblue;
     color: black;
 }
 
+/*Rubriker till radioknapparna*/
+legend{
+    font-size:18px;  
+    font-weight:bold; 
+}
+
+#weight{
+    width:300px; 
+    height: 40px;
+    border-radius:5px; 
+}
 /* STIL FÖR GUIDERESULTS */
 
 .frame {
     border: 2px solid black; 
+}
+
+.dynamic-div p {
+    font-size:16px; 
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.dynamic-div{
+    padding-bottom:10px; 
 }
 
 /* STIL för LoadingScreen*/

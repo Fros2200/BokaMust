@@ -3,13 +3,14 @@
 }
 
 <div class=background>
-     <div id="container-banner">
-        <img id="apples-banner" src="/img/applesOnTree.jpg" alt="Bild på äpplen" />
-        <h3>Vi mustar dina äpplen</h3>
+     <img id="apples-img" src="/img/applesOnTree.jpg" alt="Bild på äpplen" /> 
+     <div id="container-banner"> 
+        <h4>Vi mustar dina äpplen</h4>
         <p>Vi pressar god äppelmust av dina egna medhavna äpplen. Must av 100% äpple, inga tillsatser!</p>
     </div>
 
     <div class="background-box">
+        <h4>Äpple guiden</h4>
         <p>Behöver du lite hjälp på vägen? Använd vår guide och få mer information om hur mustningen går till</p>
         <div class="btn-container">
             <a class="btn" asp-area="" asp-controller="Guide" asp-action="GuideForm">Guide  <i class="fa-solid fa-arrow-right"></i></a>
@@ -17,7 +18,8 @@
     </div>
 
     <div class="background-box">
-        <p>Här kan du boka tid till vårt musteri på Karltomtavägen  i Bro</p>
+        <h4>Tidsbokning</h4>
+        <p>Här kan du boka tid till vårt musteri</p>
         <div class="btn-container">
             <a class="btn" asp-area="" asp-controller="Booking" asp-action="BookingForm">Boka mustning  <i class="fa-solid fa-arrow-right"></i></a>
         </div>
