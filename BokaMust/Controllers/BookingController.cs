@@ -68,9 +68,13 @@ namespace BokaMust.Controllers
 
         public List<TimeSlot> FindAvailableTimeSlots(GuideViewModel guideViewModel)
         {
+            var selectedApple = guideViewModel.Apples?.FirstOrDefault(a => a.Name == guideViewModel.SelectedApple);
+
+            string harvestMonth = selectedApple.HarvestMonth; 
+
             var allSlots = GetTimeSlots();
             var matchedSlots = allSlots.Where(slot =>
-            slot.Duration == guideViewModel.SessionTime).ToList(); 
+            slot.Month == harvestMonth && slot.Duration == guideViewModel.SessionTime).ToList(); 
 
             return matchedSlots; 
         }
