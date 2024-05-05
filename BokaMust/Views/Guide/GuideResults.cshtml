@@ -25,10 +25,9 @@
                 <p><i class="fas fa-box"></i> @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
                 <p>
                     Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
-                    vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must 
-                    ( ca @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald")).
+                    vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must.
                     Pastöriserad must i Bag-in-box är hållbar i rumstemperatur minst ett år.
-                    Öppnad förpackning bör förvaras i kylskåp och håller då 4 veckor
+                    Öppnad förpackning förvaras i kylskåp och håller 4 veckor.
                 </p>
             } 
             else if (Model.GetSelectedPackage()?.Name == "Råmust")
