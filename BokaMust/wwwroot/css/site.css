@@ -257,7 +257,7 @@ legend{
 /*Tillgängliga tider knappen*/
 .btn-link {
     width: 300px;
-    background: white;
+/*    background: white;*/
     border: none;
     color: black;
     text-decoration: none;
@@ -276,10 +276,11 @@ legend{
     margin-bottom: 5px;
 }
 
-.btn-link:hover, .btn-link:focus {
-    text-decoration: none;
-    color: darkblue;
-}
+    .btn-link:hover, .btn-link:focus {
+        border: 2px solid black;
+        background-color: lightsteelblue;
+        color: black;
+    }
 
 ul {
     list-style: none; 
@@ -289,7 +290,7 @@ ul {
 
 /*BOKNINGSBEKRÄFTELSE*/
 .confirmation-div{
-    height: 120px; 
+    height: 630px; 
     border-radius:5px; 
     padding:10px; 
     margin-bottom:20px; 

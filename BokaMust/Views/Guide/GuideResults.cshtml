@@ -2,6 +2,7 @@
 
 <body>
     <div class="background-box">
+        @Html.Partial("_LoadingScreen")
         <a href="/" class="btn-close" id="btn-close-guide">X</a>
         <div class="dynamic-div">
             <h4>Ditt resultat</h4>
@@ -54,7 +55,7 @@
         </div>
 
         <div class="btn-container">
-            <a class="btn" asp-area="" asp-controller="Booking" asp-action="AvailableTimes">Hitta ledig tid <i class="fa-solid fa-arrow-right"></i></a>
+            <a class="btn" id="btnFindTimeSlot" asp-area="" asp-controller="Booking" asp-action="AvailableTimes">Hitta ledig tid <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </body>

@@ -23,6 +23,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
+//Första försök till loadingscreen för findTimeSlotbtn
+//document.addEventListener('DOMContentLoaded', function () {
+//    const findTimeSlotBtn = document.getElementById('btnFindTimeSlot')
+
+//    if (findTimeSlotBtn.click) {
+//        document.getElementById('loadingScreen').style.display = 'block';
+
+//        setTimeout(function () {
+//            window.location.href = this.getAttribute('href'); 
+//        }.bind(this), 2000);
+//    }
+//})
 
 
 // === Anrop ===
