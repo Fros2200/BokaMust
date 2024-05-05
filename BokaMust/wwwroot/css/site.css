@@ -169,14 +169,6 @@ footer {
 }
 
 /*Rubriker till radioknapparna*/
-/*.background-box-results {
-    padding: 20px 20px 0px 20px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    background-color: var(--background-color);
-    position:relative; 
-}*/
-
 legend{
     font-size:18px;  
     font-weight:bold; 
@@ -292,5 +284,13 @@ legend{
 ul {
     list-style: none; 
     padding: 0;
+    margin-bottom:20px; 
+}
+
+/*BOKNINGSBEKRÄFTELSE*/
+.confirmation-div{
+    height: 120px; 
+    border-radius:5px; 
+    padding:10px; 
     margin-bottom:20px; 
 }

@@ -2,11 +2,9 @@
 
 <div class="background-box">
 	<a href="/" class="btn-close" id="btn-close">X</a>
-	<div class="dynamic-div">
-		<h2>Bokningsbekräftelse</h2>
-		<p>Du har bokat följande tid:</p>
-		<p>Månad: @Model.Month</p>
-		<p>Datum: @Model.Date</p>
+	<h3>Bokningsbekräftelse</h3>
+	<div class="confirmation-div">
+		<p>Datum: @Model.Date @Model.Month </p>
 		<p>Tid: @Model.Time</p>
 		<p>Varaktighet: @Model.Duration timmar</p>
 	</div>
