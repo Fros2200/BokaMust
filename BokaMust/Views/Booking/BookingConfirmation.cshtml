@@ -1,0 +1,13 @@
+﻿@model TimeSlot
+
+<div class="background-box-results">
+	<a href="/" class="btn-close" id="btn-close-guide">X</a>
+	<div class="dynamic-div">
+		<h2>Bokningsbekräftelse</h2>
+		<p>Du har bokat följande tid:</p>
+		<p>Månad: @Model.Month</p>
+		<p>Datum: @Model.Date</p>
+		<p>Tid: @Model.Time</p>
+		<p>Varaktighet: @Model.Duration timmar</p>
+	</div>
+</div>

@@ -1,7 +1,8 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel 
 
 <body>
-    <div class="background-box">
+    <div class="background-box-results">
+        <a href="/" class="btn-close" id="btn-close-guide">X</a>
         <div class="dynamic-div">
             <h4>Ditt resultat</h4>
             <p>
@@ -53,7 +54,7 @@
         </div>
 
         <div class="btn-container">
-            <a href="/" class="btn" id="btn-close-guide">Stäng</a>
+            <a class="btn" asp-area="" asp-controller="Booking" asp-action="AvailableTimes">Hitta ledig tid <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </body>

@@ -1,5 +1,14 @@
 var builder = WebApplication.CreateBuilder(args);
 
+//Lägger till sessionstjänster för att kunna lagra data temporärt 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options => 
+{
+	options.IdleTimeout = TimeSpan.FromMinutes(10);
+	options.Cookie.HttpOnly = true;
+	options.Cookie.IsEssential = true;
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -19,6 +28,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
 	name: "default",

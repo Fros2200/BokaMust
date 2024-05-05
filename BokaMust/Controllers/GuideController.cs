@@ -77,7 +77,10 @@ namespace BokaMust.Controllers
             {
                 guideViewModel.NumberOfBib = CalculateNumOfBib(guideViewModel.Volume);
             }
-            
+
+            //Sparar guideviewmodel i sessionen
+            var jsonModel= System.Text.Json.JsonSerializer.Serialize(guideViewModel);
+            HttpContext.Session.SetString("GuideResults", jsonModel); 
 
             return View("GuideResults", guideViewModel);
         }
@@ -130,7 +133,7 @@ namespace BokaMust.Controllers
             }
             else
             {
-                return 0; 
+                return 5; 
             }
         }
 

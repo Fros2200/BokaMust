@@ -1,6 +1,22 @@
-﻿
+﻿@model List<TimeSlot>
+
 <body>
-	<div class="background-box">
-		<h3>Här kommer det finnas en kalender</h3>
-	</div>
+    <div class="background-box">
+        <h3>Tillgängliga tider</h3>
+        <ul>
+            @foreach (var timeSlot in Model)
+            {
+                <form method="post" asp-action="BookTimeSlot" asp-controller="Booking">
+                    <input type="hidden" name="Month" value="@timeSlot.Month"/>
+                    <input type="hidden" name="Date" value="@timeSlot.Date" />
+                    <input type="hidden" name="Time" value="@timeSlot.Time" />
+                    <input type="hidden" name="Duration" value="@timeSlot.Duration" />
+                <li>
+                    <button type="submit" class="btn btn-link">@timeSlot.Month @timeSlot.Date @timeSlot.Time - Duration: @timeSlot.Duration hours</button>
+                </li>
+                </form>
+            }
+        </ul>
+    </div>
 </body>
+
