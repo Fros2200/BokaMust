@@ -2,6 +2,7 @@
 
 <body>
     <div class="background-box">
+        <a href="/" class="btn-close" id="btn-close">X</a>
         <h3>Tillgängliga tider</h3>
         <ul>
             @foreach (var timeSlot in Model)
@@ -12,7 +13,15 @@
                     <input type="hidden" name="Time" value="@timeSlot.Time" />
                     <input type="hidden" name="Duration" value="@timeSlot.Duration" />
                 <li>
-                    <button type="submit" class="btn btn-link">@timeSlot.Month @timeSlot.Date @timeSlot.Time - Duration: @timeSlot.Duration hours</button>
+                    <button type="submit" class="btn btn-link">
+                        <p>
+                            Datum: @timeSlot.Date @timeSlot.Month
+                            <br />
+                            Tid: @timeSlot.Time
+                            <br />
+                            Tidsåtgång: @timeSlot.Duration h
+                        </p>
+                    </button>
                 </li>
                 </form>
             }

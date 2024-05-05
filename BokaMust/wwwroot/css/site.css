@@ -67,8 +67,7 @@ footer {
     margin: 10px
 }
 
-/*STIL FÖR INDEX*/
-
+/*INDEX*/
 .background h4{
     font-size:20px;
 }
@@ -98,9 +97,10 @@ footer {
 
 .background-box {
     padding: 20px 20px 0px 20px;
-    border-radius:10px; 
+    border-radius: 10px;
     margin-bottom: 10px;
     background-color: var(--background-color);
+    position: relative;
 }
 
 .background-box p {
@@ -132,7 +132,7 @@ footer {
 }
 
 
-/*STIL FÖR GUIDE*/
+/*GUIDEFORM*/
 
 /*Skapar rutmönstret för äppleknapparna*/
 .btn-block {
@@ -169,13 +169,13 @@ footer {
 }
 
 /*Rubriker till radioknapparna*/
-.background-box-results {
+/*.background-box-results {
     padding: 20px 20px 0px 20px;
     border-radius: 10px;
     margin-bottom: 10px;
     background-color: var(--background-color);
     position:relative; 
-}
+}*/
 
 legend{
     font-size:18px;  
@@ -188,7 +188,7 @@ legend{
     border-radius:5px; 
 }
 
-/* STIL FÖR GUIDERESULTS */
+/*GUIDERESULTS*/
 .frame {
     border: 2px solid black; 
 }
@@ -223,7 +223,7 @@ legend{
         color: black;
     }
 
-/* STIL för LoadingScreen*/
+/*LAODINGSCREEN*/
 #loadingScreen {
     z-index: 1000;
     position: absolute;
@@ -261,4 +261,36 @@ legend{
         animation-delay: 1s;
     }
 
-/*STIL FÖR BOKA*/
+/*KALENDER*/
+/*Tillgängliga tider knappen*/
+.btn-link {
+    width: 300px;
+    background: white;
+    border: none;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: left;
+    border: 1px solid #313A27;
+}
+
+.btn-link p {
+    font-size: 16px;
+    line-height: 1.4;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.btn-link:hover, .btn-link:focus {
+    text-decoration: none;
+    color: darkblue;
+}
+
+ul {
+    list-style: none; 
+    padding: 0;
+    margin-bottom:20px; 
+}
