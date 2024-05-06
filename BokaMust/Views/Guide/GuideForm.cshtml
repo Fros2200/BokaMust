@@ -5,12 +5,12 @@
         @Html.Partial("_LoadingScreen")
         <a href="/" class="btn-close" id="btn-close">X</a>
         <h4>Mustguiden</h4>
-        <p>Här får du en guide till äppelmustningen</p>
-
+        <br />
         <form id="guideForm" asp-action="GuideResults" method="post" onsubmit="return validateForm()">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <fieldset>
                 <legend>Ange din äppelsort</legend>
+                <br />
                 <div class="custom-radio d-flex flex-wrap">
                     @foreach (var apple in Model.Apples)
                     {
@@ -26,7 +26,6 @@
 
             <fieldset>
                 <legend>Hur vill du att din must förpackas?</legend>
-                <br />
                 <br />
                 <div class="custom-radio">
                     <input type="radio" id="bagInBox" name="SelectedPackage" autocomplete="off" value="Bag-in-box" hidden>

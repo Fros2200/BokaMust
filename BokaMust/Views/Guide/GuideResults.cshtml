@@ -7,7 +7,7 @@
         <div class="dynamic-div">
             <h4>Ditt resultat</h4>
             <p>
-                Baserat på informationen du matat in så har vi gjort följande beräkning.
+                Baserat på din information har vi gjort följande beräkning.
                 Observera att resultatet är ungefärligt.
             </p>
         </div>
@@ -16,7 +16,7 @@
             <h4>Äppelsort</h4>
             <p><i class="fa-solid fa-apple-whole"></i> Namn: @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald")</p>
             <p><i class="fa-solid fa-info"></i> Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott</p>
-            <p><i class="fa-solid fa-calendar"></i> Mognadstid: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
+            <p><i class="fa-solid fa-calendar"></i> Tid för mustning: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
         </div>
 
         <div class="dynamic-div">
@@ -27,7 +27,7 @@
                 <p><i class="fas fa-box"></i> @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
                 <p>
                     Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
-                    vilket betyder att dina @Model.Weight kg kommer bli ungefär @Model.Volume liter must.
+                    vilket betyder att dina @Model.Weight kg äpplen kommer bli ungefär @Model.Volume liter must.
                     Pastöriserad must i Bag-in-box är hållbar i rumstemperatur minst ett år.
                     Öppnad förpackning förvaras i kylskåp och håller 4 veckor.
                 </p>
