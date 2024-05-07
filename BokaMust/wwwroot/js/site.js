@@ -72,5 +72,5 @@ function handleSubmit(event) {
 
     setTimeout(function () {
         event.target.submit();  
-    }, 1000); 
+    }, 3000); 
 }

@@ -180,6 +180,12 @@ legend{
     border-radius:5px; 
 }
 
+#apple-weight {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom:3px; 
+}
+
 /*GUIDERESULTS*/
 .frame {
     border: 2px solid black; 
@@ -194,6 +200,10 @@ legend{
 
 .dynamic-div{
     padding-bottom:10px; 
+}
+
+#clause{
+    font-style:italic; 
 }
 
 /*kryssknappen i övre högra hörnet*/

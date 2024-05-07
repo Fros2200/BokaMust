@@ -6,7 +6,7 @@
         <a href="/" class="btn-close" id="btn-close-guide">X</a>
         <div class="dynamic-div">
             <h4>Ditt resultat</h4>
-            <p>
+            <p id="clause">
                 Baserat på din information har vi gjort följande beräkning.
                 Observera att resultatet är ungefärligt.
             </p>
@@ -50,7 +50,7 @@
 
         <div class="dynamic-div">
             <h4>Tidsåtgång & pris</h4>
-            <p><i class="fa-solid fa-clock"></i> Tidsåtgång: @Model.SessionTime h</p>
+            <p><i class="fa-solid fa-clock"></i> Tidsåtgång för mustning: @Model.SessionTime timmar</p>
             <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr </p>
         </div>
 
