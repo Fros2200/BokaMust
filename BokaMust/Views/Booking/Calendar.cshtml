@@ -7,7 +7,7 @@
         <ul>
             @foreach (var timeSlot in Model)
             {
-                <form method="post" asp-action="BookTimeSlot" asp-controller="Booking">
+                <form method="post" asp-action="ConfirmTimeSlot" asp-controller="Booking">
                     <input type="hidden" name="Month" value="@timeSlot.Month" />
                     <input type="hidden" name="Date" value="@timeSlot.Date" />
                     <input type="hidden" name="Time" value="@timeSlot.Time" />

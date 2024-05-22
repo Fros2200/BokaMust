@@ -1,0 +1,18 @@
+﻿@model TimeSlot
+
+<div class="background-box">
+	<h3>Bekräfta tid</h3>
+	<div class="confirmation-div">
+		<form method="post" asp-action="BookTimeSlot" asp-controller="Booking">
+			<h4>Tid för mustning</h4>
+
+			<p>Datum: @Model.Date @Model.Month </p>
+			<p>Tid: @Model.Time</p>
+			<p>Tidsåtgång för mustning: @Model.Duration timmar</p>
+			<br />
+			<h4>Vill du boka denna tid?</h4>
+			<button type="submit" class="btn" id="btnFindNewBooking">Hitta annan tid</button>
+			<button type="submit" class="btn" id="btnConfirmBooking">Boka tid</button>
+		</form>
+	</div>
+</div>
