@@ -1,32 +1,39 @@
-﻿@model List<TimeSlot>
+﻿@model List<BokaMust.Models.TimeSlot>
 
 <body>
     <div class="background-box">
         <a href="/" class="btn-close" id="btn-close">X</a>
-        <h3>Tillgängliga tider</h3>
-        <ul>
-            @foreach (var timeSlot in Model)
-            {
-                <form method="post" asp-action="BookTimeSlot" asp-controller="Booking">
-                    <input type="hidden" name="Month" value="@timeSlot.Month" />
-                    <input type="hidden" name="Date" value="@timeSlot.Date" />
-                    <input type="hidden" name="Weekday" value="@timeSlot.Weekday" />
-                    <input type="hidden" name="Time" value="@timeSlot.Time" />
-                    <input type="hidden" name="Duration" value="@timeSlot.Duration" />
-                <li>
-                    <button type="submit" class="btn btn-link">
-                        <p>
-                            Datum: @timeSlot.Weekday @timeSlot.Date @timeSlot.Month
-                            <br />
-                            Tid: @timeSlot.Time
-                            <br />
-                            Tidsåtgång: @timeSlot.Duration h
-                        </p>
-                    </button>
-                </li>
-                </form>
-            }
-        </ul>
+ 
+        @if(Model != null && Model.Any())
+        {
+            <h3>Tillgängliga tider</h3>
+            <ul>
+                @foreach (var timeSlot in Model)
+                {
+                    <form method="post" asp-action="SelectedTime" asp-controller="Booking">
+                        <input type="hidden" name="Month" value="@timeSlot.Month" />
+                        <input type="hidden" name="Date" value="@timeSlot.Date" />
+                        <input type="hidden" name="Weekday" value="@timeSlot.Weekday" />
+                        <input type="hidden" name="Time" value="@timeSlot.Time" />
+                        <input type="hidden" name="Duration" value="@timeSlot.Duration" />
+                    <li>
+                        <button type="submit" class="btn btn-link">
+                            <p>
+                                Datum: @timeSlot.Date @timeSlot.Month
+                                <br />
+                                Tid: @timeSlot.Time
+                                <br />
+                                Tidsåtgång: @timeSlot.Duration h
+                            </p>
+                        </button>
+                    </li>
+                    </form>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Inga tider tillgängliga</p>
+        }
     </div>
 </body>
-
