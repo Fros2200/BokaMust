@@ -10,12 +10,13 @@
                 <form method="post" asp-action="BookTimeSlot" asp-controller="Booking">
                     <input type="hidden" name="Month" value="@timeSlot.Month" />
                     <input type="hidden" name="Date" value="@timeSlot.Date" />
+                    <input type="hidden" name="Weekday" value="@timeSlot.Weekday" />
                     <input type="hidden" name="Time" value="@timeSlot.Time" />
                     <input type="hidden" name="Duration" value="@timeSlot.Duration" />
                 <li>
                     <button type="submit" class="btn btn-link">
                         <p>
-                            Datum: @timeSlot.Date @timeSlot.Month
+                            Datum: @timeSlot.Weekday @timeSlot.Date @timeSlot.Month
                             <br />
                             Tid: @timeSlot.Time
                             <br />
