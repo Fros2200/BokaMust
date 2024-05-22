@@ -2,58 +2,130 @@
 using BokaMust.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace BokaMust.Controllers
 {
     public class BookingController : Controller
     {
+        #region Action methods GET
 
-		#region Action methods
+        /// <summary>
+        /// Hanterar förfrågningar för att visa BookingForm-vyn. 
+        /// </summary>
+        /// <returns>BookingForm-vyn</returns>
+        public IActionResult BookingForm()
+        {
+            return View();
+        }
 
-		public IActionResult ShowCalendar()
+        /// <summary>
+        /// Hanterar förfrågningar för Calendar vyn.
+        /// Om TempData innehåller ett TimeSlot objekt så deserialiseras det och skickas till vyn som en lista med tillgängliga tider.
+        /// TempData sparas också så att användaren ska kunna gå mellan Calendar-vyn och SelectedTime-vyn utan att tillgängliga tider försvinner. 
+        /// Om TempData är tomt, returnerar vyn med en tomlista av TimeSlot objekt
+        /// </summary>
+        /// <returns>Calendar vyn med en lista av TimeSlot object</returns>
+        public IActionResult Calendar()
 		{
-
-			return View("Calendar");
-		}
-
-		public IActionResult BookingForm()
-		{
-			return View();
-		}
-
-		[HttpPost]
-		public IActionResult ConfirmTimeSlot(TimeSlot timeSlot)
-		{
-
-			return View("BookingConfirm", timeSlot);
-		}
-
-		[HttpPost]
-		public IActionResult BookTimeSlot(TimeSlot timeSlot)
-		{
-
-			return View("BookingConfirmation", timeSlot);
-		}
-
-		public IActionResult AvailableTimes()
-		{
-			var modelJson = HttpContext.Session.GetString("GuideResults");
-			if (string.IsNullOrEmpty(modelJson))
+			if (TempData["MatchedTimeSlots"] != null)
 			{
-				return RedirectToAction("Error");
+                var matchedSlots = JsonSerializer.Deserialize<List<TimeSlot>>(TempData["MatchedTimeSlots"].ToString());
+                TempData.Keep("MatchedTimeSlots"); 
+                return View(matchedSlots);
 			}
 
-			var guideViewModel = JsonSerializer.Deserialize<GuideViewModel>(modelJson);
-			var availableTimes = FindAvailableTimeSlots(guideViewModel);
-
-			return View("Calendar", availableTimes);
+			return View(new List<TimeSlot>());
 		}
 
-		#endregion
+        /// <summary>
+        /// När användaren klickar på 'Hitta ledig tid' i GuideResults-vyn körs denna metod för at visa tillgängliga tider. 
+        /// 1. Hämtar GuideViewModel från sessionen.
+        /// 2. Hittar matchande tider. 
+        /// 3. Returnerar Calendar-vyn med de tillgängliga tiderna.
+        /// 4. Omdirigerar till Error-vyn sessionens data saknas eller är ogiltigt. 
+        /// </summary>
+        /// <returns>Calendar-vyn med en lista av tillgängliga TimeSlot-objekt om sessionens data är giltigt, annars omdirigerar den till Error-vyn.</returns>
+        public IActionResult AvailableTimes()
+        {
+            var modelJson = HttpContext.Session.GetString("GuideResults");
+            if (string.IsNullOrEmpty(modelJson))
+            {
+                return RedirectToAction("Error");
+            }
 
-		#region Helper methods
+            var guideViewModel = JsonSerializer.Deserialize<GuideViewModel>(modelJson);
+            var availableTimes = FindAvailableTimeSlots(guideViewModel);
 
-		private List<TimeSlot> GetTimeSlots()
+            return View("Calendar", availableTimes);
+        }
+
+        /// <summary>
+        /// Hanterar bokningsåtgärder baserat på den angivna parametern 'action'.
+        /// Omdirigerar användaren baserat på hens knappval. 
+        /// FindNewBooking omdirigerar till Calendar-vyn. ConfirmBooking omdirigerar till BookingConfrimation-vyn.
+        /// Om 'action'-parametern inte matchar något av fallen returneras Calendar-vyn.
+        /// </summary>
+        /// <param name="action">Strängparameter som bestämmer vilken åtgärd som ska utföras.</param>
+        /// <returns>Omdirigering till Calendar-vyn eller BookingConfirmation-vyn baserat på 'action'-parametern.</returns>
+        public IActionResult HandleBooking(string action)
+        {
+            if (action == "FindNewBooking")
+            {
+                return RedirectToAction("Calendar");
+            }
+            else if (action == "ConfirmBooking")
+            {
+                return RedirectToAction("BookingConfirmation");
+            }
+            return View("Calendar");
+        }
+
+        /// <summary>
+        /// Hanterar förfrågningar för att visa BookingConfrimation-vyn.
+        /// 1. Hämtar TimeSlot-objektet från TempData, om den finns.
+        /// 2. Skickar TimeSlot-objektet till vyn.
+        /// 3. Returnerar vyn utan modell om inget TimeSlot-objekt hittas i TempData.
+        /// </summary>
+        /// <returns>BookingConfrimation-vyn med ett TimeSlot-objekt om det finns i TempData, annars returneras vyn utan modell</returns>
+        public IActionResult BookingConfirmation()
+        {
+            if (TempData["TimeSlot"] != null)
+            {
+                var timeSlot = JsonSerializer.Deserialize<TimeSlot>(TempData["TimeSlot"].ToString());
+                return View(timeSlot);
+            }
+            return View();
+        }
+
+        #endregion
+
+        #region Action methods POST
+
+        /// <summary>
+        /// Hanterar POST förfrågningar för att spara vald tid.
+        /// Serialiserar det valda TimeSlot-objektet och lagrar det i TempData.
+        /// </summary>
+        /// <param name="timeSlot">TimeSlot-objekt som representerar den valda tiden</param>
+        /// <returns>SelectedTime-vyn med det valda TimeSlot-objektet</returns>
+        [HttpPost]
+        public IActionResult SelectedTime(TimeSlot timeSlot)
+        {
+            TempData["TimeSlot"] = JsonSerializer.Serialize(timeSlot);
+
+            return View(timeSlot);
+        }
+
+        #endregion
+
+        #region Helper methods
+
+        /// <summary>
+        /// Skapar och returnerar en fördefinerad lista med tillgängliga tider.
+        /// Varje tid innehåller information om månad, datum, veckodag, tid samt varaktighet.
+        /// </summary>
+        /// <returns>En lista med fördefinerade TimeSlot objekt som representerar tillgängliga tider.</returns>
+        private List<TimeSlot> GetTimeSlots()
 		{
 			return new List<TimeSlot>
 			{
@@ -99,6 +171,13 @@ namespace BokaMust.Controllers
 			};
 		}
 
+		/// <summary>
+		/// Hittar och returnerar en lista med tillgängliga tider som matchar angivna kriterier från guideViewModel.
+		/// Tiderna filtreras baserat på det valda äpplets HarvestMonth och SessionTime.
+        /// Tillgängliga tider sparas i TempData som MatchedTimeSlots.
+		/// </summary>
+		/// <param name="guideViewModel">Innehåller information om det valda äpplet samt sessionstid</param>
+		/// <returns>En lista av TimeSlot objekt som matchar de angivna kriterierna.</returns>
 		public List<TimeSlot> FindAvailableTimeSlots(GuideViewModel guideViewModel)
 		{
 			var selectedApple = guideViewModel.Apples?.FirstOrDefault(a => a.Name == guideViewModel.SelectedApple);
@@ -109,18 +188,11 @@ namespace BokaMust.Controllers
 			var matchedSlots = allSlots.Where(slot =>
 			slot.Month == harvestMonth && slot.Duration == guideViewModel.SessionTime).ToList();
 
+            TempData["MatchedTimeSlots"] = JsonSerializer.Serialize(matchedSlots);
+
 			return matchedSlots;
 		}
 
 		#endregion
-
-
-		//[HttpPost]
-		//public IActionResult BookTimeSlot(TimeSlot timeSlot)
-		//{
-
-		//    return View("BookingConfirmation", timeSlot);
-		//}
-
 	}
 }
