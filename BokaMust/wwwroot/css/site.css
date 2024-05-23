@@ -26,16 +26,15 @@ html {
   min-height: 100%;
 }
 
-header{
+header {
     border-top-left-radius: 10px !important;
-    border-top-right-radius: 10px !important; 
+    border-top-right-radius: 10px !important;
 }
 
 
 body {
     margin-bottom: 60px;
     background-color:lightgray; 
-    
 }
 
 .screen { /*gör så att designen ser ut som en mobil på sidan*/
@@ -191,7 +190,9 @@ footer {
 }
 
     #btnSubmitGuide {
-        margin-left: auto; 
+        margin-left: auto;
+        margin-top: 30px; 
+        margin-bottom: 20px; 
     }
 
 /*Rubriker till radioknapparna*/
@@ -320,6 +321,13 @@ ul {
     list-style: none; 
     padding: 0;
     margin-bottom:20px; 
+}
+
+/*BEKRÄFTA TID*/
+
+#btnFindNewBooking, #btnConfirmBooking{
+    margin-top: 10px; 
+    margin-right: 20px; 
 }
 
 /*BOKNINGSBEKRÄFTELSE*/
