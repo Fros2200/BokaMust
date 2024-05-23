@@ -80,15 +80,15 @@ namespace BokaMust.Controllers
         {
             return new List<Apple>
             {
-                new Apple ("Aroma", "Syrligt", "September"),
-                new Apple ("Cox Orange", "Smakrikt", "Oktober"),
-                new Apple ("Discovery", "Smakrikt", "Augusti"),
-                new Apple ("Frida", "Syrligt", "November" ),
-                new Apple ("Ingrid-Marie", "Friskt", "Oktober"),
-                new Apple ("Rubinola", "Sött", "Oktober"),
-                new Apple ("Signe Tilisch", "Sött","Oktober"),
-                new Apple ("Transparante Blanche", "Syrligt","Augusti"),
-                new Apple ("Åkerö", "Sött", "November"),
+                new Apple ("Aroma", "Syrligt", "September", "aroma.jpg"),
+                new Apple ("Cox Orange", "Smakrikt", "Oktober", "cox_orange.jpg"),
+                new Apple ("Discovery", "Smakrikt", "Augusti", "discovery.jpg"),
+                new Apple ("Frida", "Syrligt", "November","frida.jpg"),
+                new Apple ("Ingrid-Marie", "Friskt", "Oktober", "ingrid_marie.jpg"),
+                new Apple ("Rubinola", "Sött", "Oktober", "rubinola.jpg"),
+                new Apple ("Signe Tilisch", "Sött","Oktober", "signe_tilish.jpg"),
+                new Apple ("Transparante Blanche", "Syrligt","Augusti", "transparante_blanche.jpg"),
+                new Apple ("Åkerö", "Sött", "November", "akero.jpg"),
             };
         }
 

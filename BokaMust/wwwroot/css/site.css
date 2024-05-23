@@ -213,6 +213,39 @@ legend {
     margin-bottom:3px; 
 }
 
+/*Popup med äppelbilder*/
+
+/* Anpassad CSS för modalen */
+.modal-dialog {
+    max-width: 500px; /* Ändra bredden på modalen */
+    margin: 1.75rem auto; /* Justera marginalen om nödvändigt */
+}
+
+.modal-content {
+    background-color: #f8f9fa; /* Ändra bakgrundsfärgen på modalens innehåll */
+    border-radius: 10px; /* Lägg till rundade hörn */
+    padding: 20px; /* Lägg till padding */
+}
+
+.modal-header, .modal-footer {
+    border: none; /* Ta bort kantlinjerna från header och footer */
+    background-color: #343a40; /* Ändra bakgrundsfärgen på header och footer */
+    color: white; /* Ändra textfärgen */
+}
+
+.modal-body {
+    background-color: #ffffff; /* Ändra bakgrundsfärgen på modalens kropp */
+    padding: 20px; /* Lägg till padding */
+}
+
+.btn-close {
+    background-color: #ffffff; /* Ändra bakgrundsfärgen på stäng-knappen */
+    border: none; /* Ta bort kantlinjen */
+    color: #343a40; /* Ändra färgen på stäng-knappen */
+}
+
+
+
 /*GUIDERESULTS*/
 .frame {
     border: 2px solid black; 

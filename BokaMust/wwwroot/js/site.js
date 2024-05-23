@@ -2,7 +2,6 @@
 
 
 // === Eventlisteners ===
-
 document.addEventListener('DOMContentLoaded', function () {
     const form = document.getElementById('guideForm');
     const submitBtn = document.getElementById('btnSubmitGuide');
@@ -23,18 +22,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-//Första försök till loadingscreen för findTimeSlotbtn
-//document.addEventListener('DOMContentLoaded', function () {
-//    const findTimeSlotBtn = document.getElementById('btnFindTimeSlot')
-
-//    if (findTimeSlotBtn.click) {
-//        document.getElementById('loadingScreen').style.display = 'block';
-
-//        setTimeout(function () {
-//            window.location.href = this.getAttribute('href'); 
-//        }.bind(this), 2000);
-//    }
-//})
 
 
 // === Anrop ===
@@ -74,3 +61,27 @@ function handleSubmit(event) {
         event.target.submit();  
     }, 3000); 
 }
+
+// ==Testar äppelbilder i popup modul ==
+
+document.addEventListener('DOMContentLoaded', function () {
+    var appleModal = document.getElementById('appleModal');
+    if (appleModal) { // Kontrollera att elementet finns
+        appleModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var appleName = button.getAttribute('data-apple-name');
+            var appleDescription = button.getAttribute('data-apple-description');
+            var appleImageUrl = button.getAttribute('data-apple-image-url');
+
+            var modalTitle = appleModal.querySelector('.modal-title');
+            var modalImage = appleModal.querySelector('#appleImage');
+            var modalName = appleModal.querySelector('#appleName');
+            var modalDescription = appleModal.querySelector('#appleDescription');
+
+            modalTitle.textContent = appleName;
+            modalImage.src = appleImageUrl;
+            modalName.textContent = appleName;
+            modalDescription.textContent = appleDescription;
+        });
+    }
+});
