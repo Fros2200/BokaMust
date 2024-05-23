@@ -46,8 +46,19 @@ body {
     margin-bottom: 50px;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: var(--secondary-color); 
+    background-color: var(--secondary-color);
+    overflow-y: auto; /* Möjliggör vertikal scrollning */
 }
+
+    /* Gömmer scrollbaren i Chrome, Safari och Opera */
+    .screen::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Gömmer scrollbaren i Firefox */
+    .screen {
+        scrollbar-width: none;
+    }
 
 #logo{
     height:50px; 
@@ -112,7 +123,6 @@ footer {
 .btn-container{
     display:flex;
     justify-content:flex-end; 
-
 }
 
 .btn {
@@ -134,12 +144,18 @@ footer {
 
 /*GUIDEFORM*/
 
-/*Skapar rutmönstret för äppleknapparna*/
+/*Skapar rutmönstret för äppelknapparna*/
 .btn-block {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 70px;
+}
+
+/* Stil för "Jag vet inte villken äppelsort jag har-knappen" */
+.unknown-apple {
+    margin-top: 10px;  
+    height:20px; 
 }
 
 /*radioknapparna i formuläret*/
@@ -168,10 +184,20 @@ footer {
     color: black;
 }
 
+/*Gör så knappen "Hitta ledig tid" hamnar till höger*/
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+    #btnSubmitGuide {
+        margin-left: auto; 
+    }
+
 /*Rubriker till radioknapparna*/
-legend{
-    font-size:18px;  
-    font-weight:bold; 
+legend {
+    font-size: 18px;
+    font-weight: bold;
 }
 
 #weight{
@@ -264,7 +290,7 @@ legend{
     }
 
 /*KALENDER*/
-/*Tillgängliga tider knappen*/
+/*"Knapp" som visar en tillgänglig tid*/
 .btn-link {
     width: 300px;
 /*    background: white;*/
@@ -272,7 +298,7 @@ legend{
     color: black;
     text-decoration: none;
     cursor: pointer;
-    padding: 10px;
+    padding: 5px 10px 5px 10px; 
     margin-bottom: 20px;
     font-size: 16px;
     text-align: left;
@@ -281,9 +307,7 @@ legend{
 
 .btn-link p {
     font-size: 16px;
-    line-height: 1.4;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    line-height: 1.2;
 }
 
     .btn-link:hover, .btn-link:focus {

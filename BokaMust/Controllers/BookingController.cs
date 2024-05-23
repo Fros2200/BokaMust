@@ -20,15 +20,15 @@ namespace BokaMust.Controllers
         }
 
         /// <summary>
-        /// Hanterar förfrågningar för Calendar vyn.
-        /// Om TempData innehåller ett TimeSlot objekt så deserialiseras det och skickas till vyn som en lista med tillgängliga tider.
-        /// TempData sparas också så att användaren ska kunna gå mellan Calendar-vyn och SelectedTime-vyn utan att tillgängliga tider försvinner. 
+        /// Hanterar förfrågningar för Calendar vyn. 
+        /// Om TempData innehåller MatchedTimeSlots så deserialiseras det och skickas till vyn som en lista med matchade tider.
+        /// TempData sparas också så att användaren ska kunna gå mellan Calendar-vyn och SelectedTime-vyn utan att matchade försvinner. 
         /// Om TempData är tomt, returnerar vyn med en tomlista av TimeSlot objekt
         /// </summary>
         /// <returns>Calendar vyn med en lista av TimeSlot object</returns>
         public IActionResult Calendar()
 		{
-			if (TempData["MatchedTimeSlots"] != null)
+			if (TempData["MatchedTimeSlots"] != null) 
 			{
                 var matchedSlots = JsonSerializer.Deserialize<List<TimeSlot>>(TempData["MatchedTimeSlots"].ToString());
                 TempData.Keep("MatchedTimeSlots"); 
@@ -173,24 +173,36 @@ namespace BokaMust.Controllers
 
 		/// <summary>
 		/// Hittar och returnerar en lista med tillgängliga tider som matchar angivna kriterier från guideViewModel.
-		/// Tiderna filtreras baserat på det valda äpplets HarvestMonth och SessionTime.
+        /// Om användaren inte angett äppelsort så hämtas baserat på SessonTime. 
+        /// Om användaren angett äppelsort filtreras tiderna baserat på det valda äpplets HarvestMonth och SessionTime.
         /// Tillgängliga tider sparas i TempData som MatchedTimeSlots.
 		/// </summary>
 		/// <param name="guideViewModel">Innehåller information om det valda äpplet samt sessionstid</param>
 		/// <returns>En lista av TimeSlot objekt som matchar de angivna kriterierna.</returns>
 		public List<TimeSlot> FindAvailableTimeSlots(GuideViewModel guideViewModel)
 		{
-			var selectedApple = guideViewModel.Apples?.FirstOrDefault(a => a.Name == guideViewModel.SelectedApple);
+            if (guideViewModel.SelectedApple == "unknownApple") //om användaren inte angett äppelsort så tider baserat på sessionTime
+            {
+                var allSlots = GetTimeSlots();
+                var matchedSlots = allSlots.Where(slot =>
+                slot.Duration == guideViewModel.SessionTime).ToList();
 
-			string harvestMonth = selectedApple.HarvestMonth;
+                TempData["MatchedTimeSlots"] = JsonSerializer.Serialize(matchedSlots); 
+                return matchedSlots; 
+            }
+            else
+            {
+                var selectedApple = guideViewModel.Apples?.FirstOrDefault(a => a.Name == guideViewModel.SelectedApple);
+                string harvestMonth = selectedApple.HarvestMonth;
 
-			var allSlots = GetTimeSlots();
-			var matchedSlots = allSlots.Where(slot =>
-			slot.Month == harvestMonth && slot.Duration == guideViewModel.SessionTime).ToList();
+                var allSlots = GetTimeSlots();
+                var matchedSlots = allSlots.Where(slot =>
+                slot.Month == harvestMonth && slot.Duration == guideViewModel.SessionTime).ToList();
 
-            TempData["MatchedTimeSlots"] = JsonSerializer.Serialize(matchedSlots);
+                TempData["MatchedTimeSlots"] = JsonSerializer.Serialize(matchedSlots);
 
-			return matchedSlots;
+                return matchedSlots;
+            }
 		}
 
 		#endregion

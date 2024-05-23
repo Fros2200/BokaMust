@@ -1,22 +1,40 @@
 ﻿@model BokaMust.Models.ViewModels.GuideViewModel 
 
+@{
+    var selectedApple = Model.GetSelectedApple();
+    var hasSelectedApple = selectedApple != null;
+}
+
 <body>
     <div class="background-box">
         @Html.Partial("_LoadingScreen")
         <a href="/" class="btn-close" id="btn-close-guide">X</a>
         <div class="dynamic-div">
-            <h4>Ditt resultat</h4>
+@*             <h4>Ditt resultat</h4> *@
             <p id="clause">
-                Baserat på din information har vi gjort följande beräkning.
+                Baserat på infon du angivit har vi gjort följande beräkning.
                 Observera att resultatet är ungefärligt.
             </p>
         </div>
 
         <div class="dynamic-div">
             <h4>Äppelsort</h4>
-            <p><i class="fa-solid fa-apple-whole"></i> Namn: @(Model.GetSelectedApple()?.Name ?? "Ingen äppelsort vald")</p>
-            <p><i class="fa-solid fa-info"></i> Smak: @(Model.GetSelectedApple()?.Description ?? "Ingen information om smak tillgänglig") och gott</p>
-            <p><i class="fa-solid fa-calendar"></i> Tid för mustning: @(Model.GetSelectedApple()?.HarvestMonth ?? "Ingen information om mognadstid tillgänglig")</p>
+            @if (hasSelectedApple)
+            {
+                <p><i class="fa-solid fa-apple-whole"></i> Namn: @selectedApple.Name</p>
+                <p><i class="fa-solid fa-info"></i> Smak: @selectedApple.Description och gott</p>
+                <p><i class="fa-solid fa-calendar"></i> Tid för mustning: @selectedApple.HarvestMonth </p>
+            }
+            else
+            {
+                <p><i class="fa-solid fa-apple-whole"></i> Då du inte angivit äppelsort kan vi inte ge dig info om när dina äpplen förväntas vara mogna.
+                    Med här kommer ett tips du kan använda om du är osäker: 
+                    <br />
+                    Bruna kärnor = moget
+                    <br />
+                    Vita kärnor = omoget
+                </p>
+            }
         </div>
 
         <div class="dynamic-div">
@@ -24,7 +42,7 @@
             <p><i class="fa-solid fa-weight-scale"></i> Angiven vikt: @Model.Weight kg</p>
             @if (Model.GetSelectedPackage()?.Name == "Bag-in-box")
             {
-                <p><i class="fas fa-box"></i> @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.GetSelectedPackage()?.Cost kr/l)</p>
+                <p><i class="fas fa-box"></i> @Model.NumberOfBib st @(Model.GetSelectedPackage()?.Name ?? "Ingen förpackning vald") (@Model.Volume liter)</p>
                 <p>
                     Uppskattningsvis får man ut cirka 60% av fruktens vikt i must,
                     vilket betyder att dina @Model.Weight kg äpplen kommer bli ungefär @Model.Volume liter must.
@@ -51,7 +69,7 @@
         <div class="dynamic-div">
             <h4>Tidsåtgång & pris</h4>
             <p><i class="fa-solid fa-clock"></i> Tidsåtgång för mustning: @Model.SessionTime timmar</p>
-            <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr </p>
+            <p><i class="fa-solid fa-tag"></i> Pris: ca @Model.Price kr (@Model.GetSelectedPackage()?.Cost kr/l) </p>
         </div>
 
         <div class="btn-container">
