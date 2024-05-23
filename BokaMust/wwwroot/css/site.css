@@ -217,24 +217,24 @@ legend {
 
 /* Anpassad CSS för modalen */
 .modal-dialog {
-    max-width: 500px; /* Ändra bredden på modalen */
+    max-width: 350px; /* Ändra bredden på modalen */
     margin: 1.75rem auto; /* Justera marginalen om nödvändigt */
 }
 
 .modal-content {
-    background-color: #f8f9fa; /* Ändra bakgrundsfärgen på modalens innehåll */
+    background-color: white; /* Ändra bakgrundsfärgen på modalens innehåll */
     border-radius: 10px; /* Lägg till rundade hörn */
     padding: 20px; /* Lägg till padding */
 }
 
 .modal-header, .modal-footer {
     border: none; /* Ta bort kantlinjerna från header och footer */
-    background-color: #343a40; /* Ändra bakgrundsfärgen på header och footer */
+    background-color: var(--secondary-color); /* Ändra bakgrundsfärgen på header och footer */
     color: white; /* Ändra textfärgen */
 }
 
 .modal-body {
-    background-color: #ffffff; /* Ändra bakgrundsfärgen på modalens kropp */
+    background-color: var(--background-color); /* Ändra bakgrundsfärgen på modalens kropp */
     padding: 20px; /* Lägg till padding */
 }
 
