@@ -214,36 +214,48 @@ legend {
 }
 
 /*Popup med äppelbilder*/
-
-/* Anpassad CSS för modalen */
 .modal-dialog {
-    max-width: 350px; /* Ändra bredden på modalen */
-    margin: 1.75rem auto; /* Justera marginalen om nödvändigt */
+    max-width: 350px;
+    margin: 1.75rem auto;
+    top: 10%;
+    transform: translateY(-50%); /* Centrerar modalen vertikalt */
 }
 
 .modal-content {
-    background-color: white; /* Ändra bakgrundsfärgen på modalens innehåll */
-    border-radius: 10px; /* Lägg till rundade hörn */
-    padding: 20px; /* Lägg till padding */
+    background-color: white; 
+    border-radius: 10px; 
+    padding: 10px; 
 }
 
-.modal-header, .modal-footer {
-    border: none; /* Ta bort kantlinjerna från header och footer */
-    background-color: var(--secondary-color); /* Ändra bakgrundsfärgen på header och footer */
-    color: white; /* Ändra textfärgen */
+.modal-footer {
+    border: none;
+    background-color: var(--background-color);
 }
 
 .modal-body {
-    background-color: var(--background-color); /* Ändra bakgrundsfärgen på modalens kropp */
-    padding: 20px; /* Lägg till padding */
+    background-color: var(--background-color); 
+    padding: 20px; 
 }
+
+    .modal-body img{
+        border: 5px solid var(--secondary-color); 
+        border-radius: 10px; 
+    }
+    
+    .modal-body h4{
+        margin-top: 20px; 
+        margin-bottom: 10px; 
+    }
+
+    .modal-body p {
+        line-height: 1.4;
+    }
 
 .btn-close {
-    background-color: #ffffff; /* Ändra bakgrundsfärgen på stäng-knappen */
-    border: none; /* Ta bort kantlinjen */
-    color: #343a40; /* Ändra färgen på stäng-knappen */
+    background-color: #ffffff; 
+    border: none; 
+    color: #343a40; 
 }
-
 
 
 /*GUIDERESULTS*/

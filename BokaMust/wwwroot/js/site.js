@@ -62,7 +62,8 @@ function handleSubmit(event) {
     }, 3000); 
 }
 
-// ==Testar äppelbilder i popup modul ==
+
+//== Äppel pop-up modulen ==
 
 document.addEventListener('DOMContentLoaded', function () {
     var appleModal = document.getElementById('appleModal');
@@ -71,17 +72,18 @@ document.addEventListener('DOMContentLoaded', function () {
             var button = event.relatedTarget;
             var appleName = button.getAttribute('data-apple-name');
             var appleDescription = button.getAttribute('data-apple-description');
+            var appleHarvestMonth = button.getAttribute('data-apple-harvestmonth');
             var appleImageUrl = button.getAttribute('data-apple-image-url');
 
-            var modalTitle = appleModal.querySelector('.modal-title');
             var modalImage = appleModal.querySelector('#appleImage');
             var modalName = appleModal.querySelector('#appleName');
             var modalDescription = appleModal.querySelector('#appleDescription');
+            var modalHarvestMonth = appleModal.querySelector('#appleHarvestMonth');
 
-            modalTitle.textContent = appleName;
             modalImage.src = appleImageUrl;
             modalName.textContent = appleName;
-            modalDescription.textContent = appleDescription;
+            modalDescription.textContent = "Smak: " + appleDescription + " och gott.";
+            modalHarvestMonth.textContent = "Denna äppelsort mognar oftast i " + appleHarvestMonth; 
         });
     }
 });
